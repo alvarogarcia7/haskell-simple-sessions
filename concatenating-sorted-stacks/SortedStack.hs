@@ -22,6 +22,7 @@ main = do
           it "the order does not matter" $ do
             merg [1,2] [2] `shouldBe` [1,2,2]
             merg [2,3] [1] `shouldBe` [1,2,3]
+            merg [2,3] [1,3,3,3,4] `shouldBe` [1,2,3,3,3,3,4]
 
 
 st1 = [0,2,4,6,8]
