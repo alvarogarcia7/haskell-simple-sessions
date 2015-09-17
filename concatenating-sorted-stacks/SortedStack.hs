@@ -1,4 +1,18 @@
-main =putStrLn "hello"
+import Test.Hspec
+import Test.QuickCheck
+
+main :: IO ()
+main = do
+  hspec $ do
+    describe "Canary Test" $ do
+        it "should be green" $ do
+          True `shouldBe` True
+
+    describe "sorting stacks" $ do
+        it "should sort one empty stack" $ do
+	      merg [1] [] `shouldBe` [1]
+	      merg [] [1] `shouldBe` [1]
+
 
 st1 = [0,2,4,6,8]
 st2 = [1,3,5,7,9]
