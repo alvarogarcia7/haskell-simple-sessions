@@ -13,6 +13,11 @@ main = do
 	      merg [1] [] `shouldBe` [1]
 	      merg [] [1] `shouldBe` [1]
 
+        describe "should sort stacks with only one element" $ do
+          it "the order does not matter" $ do
+            merg [1] [2] `shouldBe` [1,2]
+            merg [2] [1] `shouldBe` [1,2]
+
 
 st1 = [0,2,4,6,8]
 st2 = [1,3,5,7,9]
