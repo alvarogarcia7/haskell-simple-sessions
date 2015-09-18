@@ -14,6 +14,9 @@ main = hspec $ do
       it "of a 1-element array should be unique" $ do
         (permutate [1]) `shouldBe` ([[1]] :: [[Int]])
 
+      it "of a 2-element array" $ do
+        (permutate [1,2]) `shouldBe` ([[1,2], [2,1]] :: [[Int]])
+
 permutate :: [a] -> [[a]]
 permutate [] = []
 permutate x = [x]
