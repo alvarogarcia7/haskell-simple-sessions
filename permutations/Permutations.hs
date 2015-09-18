@@ -21,6 +21,13 @@ main = hspec $ do
         it "with repeated elements" $ do
           (permutate [3,3]) `shouldBe` ([[3,3], [3,3]] :: [[Int]]) --because permutations are performed on sets, therefore the two threes (3) are different
 
+
+      describe "of a 3-element array" $ do
+      	it "no repeated elements" $ do
+          (permutate [1,2,3]) `shouldBe` ([[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]] :: [[Int]])
+
+
+
 permutate :: [a] -> [[a]]
 permutate [] = []
 permutate x = case length x of
