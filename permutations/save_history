@@ -64,3 +64,17 @@ push 1 [1]
 :l SortedStack.hs 
 :l SortedStack.hs 
 
+splitAt 1 $ snd $ splitAt 1 $ xs
+splitAt 1 $ splitAt 1 $ xs
+splitAt 1 xs
+fst splitAt 1 xs
+xs
+fst $ splitAt 1 xs
+map fst $ splitAt 1 xs
+splitAt 1 [1,2,3]
+splitAt 1 [1,2]
+map head' xs
+let head' x = [x]
+head xs
+let xs = [1,2,3]
+
