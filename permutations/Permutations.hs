@@ -16,3 +16,4 @@ main = hspec $ do
 
 permutate :: [a] -> [[a]]
 permutate [] = []
+permutate x = [x]
