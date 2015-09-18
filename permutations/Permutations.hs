@@ -19,4 +19,6 @@ main = hspec $ do
 
 permutate :: [a] -> [[a]]
 permutate [] = []
-permutate x = [x]
+permutate x = case length x of
+	1 -> [x]
+	_ -> x : [reverse x]
