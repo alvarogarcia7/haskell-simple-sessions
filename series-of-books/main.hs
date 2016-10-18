@@ -3,6 +3,11 @@
 merge :: [[b]] -> b -> [[[b]]]
 merge cart book = [[book]:cart, map (\serie -> book:serie) cart, [[book]], cart]
 
+-- generates carts of books, which the following restrictions
+--  * order of books in a series does not matter
+--  * order of series does not matter
+--  * the amount of books in a cart cannot of be changed
+-- TODO: DEFECT: it generates duplicates
 cartsFor :: [b] -> [[[b]]]
 cartsFor books = filter (\cart -> (length' cart == (length books))) (cartsFor' [[[]]] books)
     where cartsFor' accCarts [] = accCarts
