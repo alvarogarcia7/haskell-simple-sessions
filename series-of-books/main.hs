@@ -17,8 +17,8 @@ length' [x] = length'' x
 length' (x:y) = length'' x + length' y
 
 length'' :: [b] -> Int
-length'' [] = 999
-length'' x = length x
+length'' [] = 0
+length'' (x:xs) = 1 + length'' xs
 
 flatMap :: (a -> [b]) -> [a] -> [b]
 flatMap f xs = foldl (\acc x -> (acc ++ f x)) [] xs
