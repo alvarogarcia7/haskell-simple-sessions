@@ -5,6 +5,8 @@ import Text.Printf (printf)
 
 import Data.List
 
+type Serie a = [a]
+
 merge :: [[b]] -> b -> [[[b]]]
 merge cart book = [[book]:cart, map (\serie -> book:serie) cart, [[book]], cart]
 
