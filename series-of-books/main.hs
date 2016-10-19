@@ -1,3 +1,8 @@
+module BookGeneration where
+
+import Test.Hspec
+import Text.Printf (printf)
+
 import Data.List
 
 merge :: [[b]] -> b -> [[[b]]]
@@ -35,3 +40,8 @@ priceForSerie serie = serieLength * 8.0 * (1.0 - discount) where
 --Main> map (\cart -> (cart, priceFor cart)) (cartsFor [1,2])
 --[([[2],[1],[]],16.0),([[2],[1]],16.0),([[2,1]],15.2)]
 
+
+main = hspec $ do
+    describe "generates carts" $ do
+        it "no books turns into a single cart" $
+            (cartsFor [] :: [[[Int]]]) `shouldBe` ([[[]]] :: [[[Int]]])
