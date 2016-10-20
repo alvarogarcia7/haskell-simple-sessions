@@ -2,6 +2,7 @@ module IntroToTypes where
 
 import Test.Hspec
 import Text.Printf (printf)
+import Prelude hiding (flip)
 
 type Serie a = [a]
 type Cart a = [Serie a]
@@ -23,6 +24,9 @@ length'' :: Serie s -> Int
 length'' [] = 0
 length'' (book:restOfSerie) = 1 + length'' restOfSerie
 
+flip :: Cart c -> Cart c
+flip = id
+
 main = hspec $ do
     describe "a simple type" $ do
         it "is equivalent to its primitive representation" $ do
@@ -40,3 +44,8 @@ main = hspec $ do
             length' ([2]:cart [1]) `shouldBe` 2;
             length' ([2,3]:cart [1]) `shouldBe` 3;
             length' ([3,4]:([2,3]:cart [1])) `shouldBe` 5;
+
+    describe "flip cart" $ do
+        it "flips an empty cart" $ do
+           (flip (cart (serie 1))) `shouldBe` cart (serie 1);
+
