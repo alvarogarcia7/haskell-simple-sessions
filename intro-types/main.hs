@@ -9,6 +9,9 @@ type Cart a = [Serie a]
 serie :: b -> Serie b
 serie b = [b]
 
+serieFor :: [b] -> Serie b
+serieFor = id
+
 cart :: Serie s -> Cart s
 cart s = [s]
 
