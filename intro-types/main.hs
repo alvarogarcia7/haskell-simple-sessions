@@ -36,7 +36,7 @@ main = hspec $ do
 
     describe "a cart" $ do
         it "has a length" $ do
-            (length' (cart [1])) `shouldBe` 1;
-            (length' ([2]:cart [1])) `shouldBe` 2;
-            (length' ([2,3]:cart [1])) `shouldBe` 3;
-            (length' ([3,4]:([2,3]:cart [1]))) `shouldBe` 5;
+            length' (cart [1]) `shouldBe` 1;
+            length' ([2]:cart [1]) `shouldBe` 2;
+            length' ([2,3]:cart [1]) `shouldBe` 3;
+            length' ([3,4]:([2,3]:cart [1])) `shouldBe` 5;
