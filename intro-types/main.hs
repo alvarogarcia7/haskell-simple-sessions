@@ -17,4 +17,7 @@ main = hspec $ do
         it "is equivalent to its primitive representation" $ do
             (serie 1) `shouldBe` [1];
             (cart (serie 1)) `shouldBe` [[1]];
+
+        it "can be manipulated as a list (underlying representation)" $ do
+            (1:(serie 2)) `shouldBe` [1,2];
             
