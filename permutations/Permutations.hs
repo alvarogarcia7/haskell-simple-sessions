@@ -25,13 +25,11 @@ main = hspec $ do
       describe "of a 3-element array" $ do
         it "no repeated elements" $ do
           (permutate [1,2,3]) `shouldBeInAnyOrder` ([[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]] :: [[Int]])
-          (permutate [1,2,3]) `shouldBeSameLengthAs` ([[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]] :: [[Int]])
 
 
-shouldBeSameLengthAs actual expected = length actual `shouldBe` (length expected);
 shouldBeInAnyOrder actual expected = 
-    (all (==True) $ map (\element -> (any (== element) actual)) expected) `shouldBe` True
-
+   (all (==True) $ (map (containedIn expected) actual ++ map (containedIn actual) expected)) `shouldBe` True where
+        containedIn expecteds actual = any (==actual) expecteds
 
 
 permutate :: [a] -> [[a]]
