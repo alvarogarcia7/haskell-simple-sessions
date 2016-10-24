@@ -21,7 +21,7 @@ main = hspec $ do
 
 permutations :: [a] -> [[a]]
 permutations xs = permutations' [] xs [[]] where
-    permutations' _ [] acc = acc
+    permutations' _ [] permutations = permutations
     permutations' used (head:rest) acc = permutations' (head:used) rest inAllPositions where
             inAllPositions = flatMap (\perm -> map (\pos -> setAt perm pos head) (positionsOf perm)) acc where
                 positionsOf array = (reverse [0..(length array)])
