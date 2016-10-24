@@ -24,7 +24,6 @@ permutations xs = permutations' [] xs [[]] where
     permutations' _ [] acc = acc
     permutations' used (head:rest) acc = permutations' (head:used) rest x where
             x = aNew acc head where
-                aNew [[]] b = [[b]]
                 aNew acc ele = flatMap (\perm -> map (\pos -> setAt perm pos ele) (positionsOf perm)) acc where
                     positionsOf array = (reverse [0..(length array)])
 
