@@ -29,7 +29,7 @@ main = hspec $ do
 
 shouldBeInAnyOrder actual expected = 
    shouldBe True $ (all (==True) (
-    (length actual == length expected):
+    (length actual == length expected) :
     (expected `includedIn` actual) ++
     (actual `includedIn` expected)))
 
