@@ -30,7 +30,8 @@ main = hspec $ do
 shouldBeInAnyOrder actual expected = 
    shouldBe True $ (all (==True) (
     (length actual == length expected):
-   (expected `includedIn` actual) ++  (actual `includedIn` expected)))
+    (expected `includedIn` actual) ++
+    (actual `includedIn` expected)))
 
 includedIn xs ys = map (containedIn xs) ys where
     containedIn expecteds actual = any (==actual) expecteds
