@@ -15,7 +15,7 @@ main = hspec $ do
         (permutate [1]) `shouldBe` ([[1]] :: [[Int]])
 
       describe "of a 2-element array" $ do
-      	it "no repeated elements" $ do
+        it "no repeated elements" $ do
           (permutate [1,2]) `shouldBe` ([[1,2], [2,1]] :: [[Int]])
 
         it "with repeated elements" $ do
@@ -23,13 +23,32 @@ main = hspec $ do
 
 
       describe "of a 3-element array" $ do
-      	it "no repeated elements" $ do
-          (permutate [1,2,3]) `shouldBe` ([[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]] :: [[Int]])
+        it "no repeated elements" $ do
+          (permutate [1,2,3]) `shouldBeInAnyOrder` ([[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]] :: [[Int]])
+          (permutate [1,2,3]) `shouldBeSameLengthAs` ([[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]] :: [[Int]])
+
+
+shouldBeSameLengthAs actual expected = length actual `shouldBe` (length expected);
+shouldBeInAnyOrder actual expected = 
+    (all (==True) $ map (\element -> (any (== element) actual)) expected) `shouldBe` True
 
 
 
 permutate :: [a] -> [[a]]
 permutate [] = []
-permutate x = case length x of
-	1 -> [x]
-	_ -> x : [reverse x]
+permutate x = permutate' x [[]] where
+  permutate' elements accumulated = case length elements of
+    1 -> [elements]
+    2 -> [elements, reverse elements]
+    n -> foldl (++) [] $ map (\comb -> addInAllPositions (head x) comb ) $ permutate' (tail x) accumulated
+
+
+addInAllPositions element array = map (\position -> setAt array position element) (reverse [0..(length array)])
+
+-- TODO AGB Replace function with Data.List.Tools::setAt
+setAt :: [a] -> Int -> a -> [a]
+setAt [] 0 ele = [ele]
+setAt [] _ _ = []
+setAt coll 0 ele = ele:coll
+setAt (x:xs) n ele = x:(setAt xs (n-1) ele)
+
