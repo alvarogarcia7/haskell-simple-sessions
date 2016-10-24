@@ -23,9 +23,9 @@ permutations :: [a] -> [[a]]
 permutations xs = permutations' [] xs [[]] where
     permutations' _ [] permutations = permutations
     permutations' used (head:rest) accumulated = permutations' (head:used) rest inAllPositions where
-            inAllPositions = flatMap (\perm -> map (setAt' perm) (positionsOf perm)) accumulated where
-                setAt' perm position = setAt perm position head
-                positionsOf array = (reverse [0..(length array)])
+        inAllPositions = flatMap (\perm -> map (setAt' perm) (positionsOf perm)) accumulated where
+            setAt' perm position = setAt perm position head
+            positionsOf array = (reverse [0..(length array)])
 
 flatMap f xs = foldl (\ acc ele -> acc++f ele) [] xs
 
