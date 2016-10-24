@@ -31,7 +31,7 @@ shouldBeInAnyOrder actual expected =
    shouldBe True $ (all (==True) (
     (length actual == length expected) :
     (expected `includedIn` actual) ++
-    (actual `includedIn` expected)))
+    actual `includedIn` expected))
 
 includedIn xs ys = map (containedIn xs) ys where
     containedIn expecteds actual = any (==actual) expecteds
