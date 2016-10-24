@@ -27,7 +27,7 @@ permutations xs = permutations' [] xs [[]] where
             setAt' perm position = setAt perm position head
             positionsOf array = (reverse [0..(length array)])
 
-flatMap f xs = foldl (\ acc ele -> acc++f ele) [] xs
+flatMap f xs = foldl (++) [] $ map f xs
 
 setAt :: [a] -> Int -> a -> [a]
 setAt [] 0 ele = [ele]
