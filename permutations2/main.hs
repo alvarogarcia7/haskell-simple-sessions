@@ -29,6 +29,7 @@ permutations xs = permutations' [] xs [[]] where
 
 flatMap f xs = foldl (++) [] $ map f xs
 
+-- TODO AGB Replace function with Data.List.Tools::setAt
 setAt :: [a] -> Int -> a -> [a]
 setAt [] 0 ele = [ele]
 setAt [] _ _ = []
