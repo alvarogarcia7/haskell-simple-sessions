@@ -28,8 +28,10 @@ main = hspec $ do
 
 
 shouldBeInAnyOrder actual expected = 
-   (all (==True) $ (map (containedIn expected) actual ++ map (containedIn actual) expected)) `shouldBe` True where
-        containedIn expecteds actual = any (==actual) expecteds
+   shouldBe True ((all (==True) ((expected `includedIn` actual) ++  (actual `includedIn` expected) ++ [length expected == length actual])))
+
+includedIn xs ys = map (containedIn xs) ys where
+    containedIn expecteds actual = any (==actual) expecteds
 
 
 permutate :: [a] -> [[a]]
