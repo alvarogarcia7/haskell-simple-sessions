@@ -23,8 +23,11 @@ merge cart book = x where
 --  * order of books in a series does not matter
 --  * order of series does not matter
 --  * the amount of books in a cart cannot of be changed
-cartsFor :: Show b => Eq b => [b] -> [[[b]]]
-cartsFor books = nub (sortBy sortCarts (filter (\cart -> (length' cart == (length books))) (removeEmptySeries (cartsFor' [[[]]] books))))
+cartsFor :: Ord b => Show b => Eq b => [b] -> [[[b]]]
+cartsFor books = (sortBy sortCarts ((filter (\cart -> (length' cart == (length books))) (removeEmptySeries (cartsFor' [[[]]] books)))))
+
+unify :: Ord b => Eq b => [[[b]]] -> [[[b]]]
+unify carts = nub $ sort $ map sort carts
 
 removeEmptySeries :: [[[b]]] -> [[[b]]]
 removeEmptySeries carts = map removeEmptySeries' carts where
@@ -38,6 +41,7 @@ sortSeries a b | length a > length b = GT
                | length a < length b = LT
                | otherwise = EQ
 
+cartsFor' :: Ord b => Show b => [[[b]]] -> [b] -> [[[b]]]
 cartsFor' accCarts [] = accCarts
 cartsFor' accCarts (x:xs) = cartsFor' (flatMap (\cart -> merge cart x) accCarts) xs
 
@@ -74,3 +78,16 @@ main = hspec $ do
     describe "generates carts" $ do
         it "no books turns into a single cart" $
             (cartsFor [] :: [[[Int]]]) `shouldBe` ([[]] :: [[[Int]]])
+
+        it "counts carts" $ do
+            length (cartsFor [1]) `shouldBe` 1;
+            length (cartsFor [1,2]) `shouldBe` 2;
+
+        describe "does not matter which elements are present" $ do
+            it "all different" $ do
+                length (cartsFor [1,2,3]) `shouldBe` 5;
+            it "some repetition" $ do
+                length (cartsFor [1,2,1]) `shouldBe` 5;
+            it "all the same" $ do
+                length (cartsFor [1,1,1]) `shouldBe` 5;
+
