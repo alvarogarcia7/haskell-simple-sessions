@@ -16,3 +16,5 @@ main = hspec $ do
             it "base case" $ do
                 ((powersets []) :: [[Int]]) `shouldBe` [[]];
 
+            it "input of one" $ do
+                ((powersets [1]) :: [[Int]]) `shouldBe` [[],[1]];
