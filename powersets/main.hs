@@ -8,9 +8,10 @@ powersets :: [x] -> [[x]]
 powersets xs = sortBy size $ p' xs
 
 p' :: [x] -> [[x]]
-p' xs = flatmap f (tails xs) where
+p' xs = flatmap f pieces where
     f [] = [[]]
     f (x':xs') = map (\xs'' -> x':xs'') (p' xs')
+    pieces = tails xs
 
 size a b | length a > length b = GT
               | length a < length b = LT
