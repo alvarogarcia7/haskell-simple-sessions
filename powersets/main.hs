@@ -7,6 +7,7 @@ import Text.Printf (printf)
 powersets :: [x] -> [[x]]
 powersets [] = [[]]
 powersets (x:[]) = [[],[x]]
+powersets (x:y:[]) = [[],[x],[y],[x,y]]
 
 flatmap :: (x -> [x]) -> [x] -> [x]
 flatmap f xs = foldl (\acc ele-> acc ++ (f ele)) [] xs
