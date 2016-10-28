@@ -7,16 +7,16 @@ import Text.Printf (printf)
 powersets :: [x] -> [[x]]
 powersets xs = sortBy size $ p' xs
 
-size a b | length a > length b = GT
-              | length a < length b = LT
-              | length a == length b = EQ
-
-
 p' :: [x] -> [[x]]
 p' [] = [[]]
 p' xs = flatmap f (tails xs) where
     f [] = [[]]
     f (x':xs') = map (\xs'' -> x':xs'') (p' xs')
+
+size a b | length a > length b = GT
+              | length a < length b = LT
+              | length a == length b = EQ
+
 
 flatmap :: (x -> [x]) -> [x] -> [x]
 flatmap f xs = foldl (\acc ele-> acc ++ (f ele)) [] xs
