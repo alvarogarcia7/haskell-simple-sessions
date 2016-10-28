@@ -5,18 +5,18 @@ import Data.List
 import Text.Printf (printf)
 
 powersets :: [x] -> [[x]]
-powersets xs = sortBy size $ p' (length xs) xs
+powersets xs = sortBy size $ p' xs
 
 size a b | length a > length b = GT
               | length a < length b = LT
               | length a == length b = EQ
 
 
-p' :: Eq n => Num n => n -> [x] -> [[x]]
-p' 0 _ = [[]]
-p' n xs = flatmap f ( tails xs) where
+p' :: [x] -> [[x]]
+p' [] = [[]]
+p' xs = flatmap f ( tails xs) where
     f [] = [[]]
-    f (x':xs') = map (\xs'' -> x':xs'') (p' (n-1) xs')
+    f (x':xs') = map (\xs'' -> x':xs'') (p' xs')
 
 flatmap :: (x -> [x]) -> [x] -> [x]
 flatmap f xs = foldl (\acc ele-> acc ++ (f ele)) [] xs
