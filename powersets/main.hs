@@ -25,5 +25,7 @@ main = hspec $ do
             it "input of one" $ do
                 ((powersets [1]) :: [[Int]]) `shouldBe` [[],[1]];
 
+            it "input of two" $ do
+                ((powersets [1,2]) :: [[Int]]) `shouldBe` [[],[1],[2],[1,2]];
 
 
