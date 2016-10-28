@@ -12,8 +12,8 @@ powersets xs = sortBy size $ powersets' xs where
         pieces = tails xs
 
 size a b | length a > length b = GT
-              | length a < length b = LT
-              | length a == length b = EQ
+         | length a < length b = LT
+         | length a == length b = EQ
 
 
 flatmap :: (x -> [x]) -> [x] -> [x]
