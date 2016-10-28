@@ -6,10 +6,15 @@ import Text.Printf (printf)
 
 powersets :: [x] -> [[x]]
 powersets xs = sortBy size $ powersets' xs where
-    powersets' xs = flatmap addHeadTo pieces where
+    powersets' xs = flatmap addHeadTo (pieces xs) where
         addHeadTo [] = [[]]
         addHeadTo (x':xs') = map (x':) (powersets' xs')
-        pieces = tails xs
+
+-- Pieces: generates candidates from the input, removing one
+-- by one the elements from the left. Returns all immediate results
+-- See tests
+pieces :: [x] -> [[x]]
+pieces = tails
 
 size a b | length a > length b = GT
          | length a < length b = LT
@@ -23,6 +28,11 @@ main = hspec $ do
         describe "canary" $ do
             it "truth" $ do
                 True `shouldBe` True;
+
+        describe "helper functions" $ do
+            describe "pieces" $ do
+                it "generates " $ do
+                    pieces [1,2,3] `shouldBe` [[1,2,3],[2,3],[3],[]]
 
         describe "powersets" $ do
             it "base case" $ do
