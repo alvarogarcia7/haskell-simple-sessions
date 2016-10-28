@@ -44,9 +44,6 @@ main = hspec $ do
             it "input of two" $ do
                 ((powersets [1,2]) :: [[Int]]) `shouldBe` [[],[1],[2],[1,2]];
 
-            it "supports repeated elements" $ do
-                ((powersets [1,1]) :: [[Int]]) `shouldBe` [[],[1],[1],[1,1]];
-
             it "input of three" $ do
                 ((powersets [1,2,3]) :: [[Int]]) `shouldBe` [[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]];
 
@@ -55,5 +52,8 @@ main = hspec $ do
 
             it "by definition, the size of a powerset is 2**n where n is the size of the initial array" $ do
                 toRational (length (powersets [1..10])) `shouldBe` (toRational $ 2 ** 10) 
+
+            it "supports repeated elements" $ do
+                ((powersets [1,1]) :: [[Int]]) `shouldBe` [[],[1],[1],[1,1]];
 
 
