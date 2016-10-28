@@ -44,6 +44,9 @@ main = hspec $ do
             it "input of two" $ do
                 ((powersets [1,2]) :: [[Int]]) `shouldBe` [[],[1],[2],[1,2]];
 
+            it "supports repeated elements" $ do
+                ((powersets [1,1]) :: [[Int]]) `shouldBe` [[],[1],[1],[1,1]];
+
             it "input of three" $ do
                 ((powersets [1,2,3]) :: [[Int]]) `shouldBe` [[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]];
 
