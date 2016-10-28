@@ -14,7 +14,7 @@ size a b | length a > length b = GT
 
 p' :: [x] -> [[x]]
 p' [] = [[]]
-p' xs = flatmap f ( tails xs) where
+p' xs = flatmap f (tails xs) where
     f [] = [[]]
     f (x':xs') = map (\xs'' -> x':xs'') (p' xs')
 
