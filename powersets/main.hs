@@ -10,8 +10,7 @@ powersets xs = sortBy size $ powersets' xs where
         addHeadTo [] = [[]]
         addHeadTo (x':xs') = map (x':) (powersets' xs')
 
--- Pieces: generates candidates from the input, removing one
--- by one the elements from the left. Returns all immediate results
+-- Pieces: generates immediate results of removing elements from the left, one by one
 -- See tests
 pieces :: [x] -> [[x]]
 pieces = tails
