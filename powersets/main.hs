@@ -8,7 +8,7 @@ powersets :: [x] -> [[x]]
 powersets xs = sortBy size $ powersets' xs where
     powersets' xs = flatmap addHeadTo pieces where
         addHeadTo [] = [[]]
-        addHeadTo (x':xs') = map (\xs'' -> x':xs'') (powersets' xs')
+        addHeadTo (x':xs') = map (x':) (powersets' xs')
         pieces = tails xs
 
 size a b | length a > length b = GT
