@@ -5,13 +5,11 @@ import Data.List
 import Text.Printf (printf)
 
 powersets :: [x] -> [[x]]
-powersets xs = sortBy size $ p' xs
-
-p' :: [x] -> [[x]]
-p' xs = flatmap addHeadTo pieces where
-    addHeadTo [] = [[]]
-    addHeadTo (x':xs') = map (\xs'' -> x':xs'') (p' xs')
-    pieces = tails xs
+powersets xs = sortBy size $ powersets' xs where
+    powersets' xs = flatmap addHeadTo pieces where
+        addHeadTo [] = [[]]
+        addHeadTo (x':xs') = map (\xs'' -> x':xs'') (powersets' xs')
+        pieces = tails xs
 
 size a b | length a > length b = GT
               | length a < length b = LT
