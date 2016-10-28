@@ -50,4 +50,7 @@ main = hspec $ do
             it "input of four, by size only" $ do
                 toRational (length (powersets [1,2,3,4])) `shouldBe` (toRational $ 2 ** 4) 
 
+            it "by definition, the size of a powerset is 2**n where n is the size of the initial array" $ do
+                toRational (length (powersets [1..10])) `shouldBe` (toRational $ 2 ** 10) 
+
 
