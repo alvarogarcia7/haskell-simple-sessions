@@ -39,4 +39,7 @@ main = hspec $ do
             it "input of three" $ do
                 ((powersets [1,2,3]) :: [[Int]]) `shouldBe` [[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]];
 
+            it "input of four, by size only" $ do
+                toRational (length (powersets [1,2,3,4])) `shouldBe` (toRational $ 2 ** 4) 
+
 
