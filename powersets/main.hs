@@ -8,6 +8,7 @@ powersets :: [x] -> [[x]]
 powersets [] = [[]]
 powersets (x:[]) = [[],[x]]
 powersets (x:y:[]) = [[],[x],[y],[x,y]]
+powersets (x:y:z:[]) = [[],[x],[y],[z],[x,y],[x,z],[y,z],[x,y,z]]
 
 flatmap :: (x -> [x]) -> [x] -> [x]
 flatmap f xs = foldl (\acc ele-> acc ++ (f ele)) [] xs
@@ -30,6 +31,6 @@ main = hspec $ do
                 ((powersets [1,2]) :: [[Int]]) `shouldBe` [[],[1],[2],[1,2]];
 
             it "input of three" $ do
-                ((powersets [1,2,3]) :: [[Int]]) `shouldBe` [[],[1],[2],[3],[1,2],[2,3],[1,2,3]];
+                ((powersets [1,2,3]) :: [[Int]]) `shouldBe` [[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]];
 
 
