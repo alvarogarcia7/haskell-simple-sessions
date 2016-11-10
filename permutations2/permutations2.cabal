@@ -13,7 +13,7 @@ Library
   ghc-options:       -Wall
 
 Test-Suite hspec
-  hs-source-dirs:   test
+  hs-source-dirs: test
   type: exitcode-stdio-1.0
-  main-is:    HSpecTests.hs
+  main-is: HSpecTests.hs
   build-depends: base,hspec,Permutations2
