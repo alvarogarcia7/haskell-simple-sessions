@@ -2,3 +2,6 @@
 
 test:
 	cabal test
+
+build:
+	cabal build
