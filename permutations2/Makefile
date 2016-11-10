@@ -1,4 +1,4 @@
 .PHONY: test
 
 test:
-	runhaskell main.hs
+	cabal test
