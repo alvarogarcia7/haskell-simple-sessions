@@ -1,0 +1,17 @@
+Name:                Permutations2
+Version:             0.0.1
+Description:         Practicing permutations
+License:             BSD3
+License-file:        LICENSE
+Build-Type:          Simple
+Cabal-Version:       >=1.2
+   
+Library
+  Build-Depends:     base >= 3 && < 5
+  Exposed-modules:   Permutations
+  ghc-options:       -Wall
+
+Test-Suite hspec
+    type: exitcode-stdio-1.0
+    main-is:    HSpecTests.hs
+    build-depends: base,hspec
