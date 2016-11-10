@@ -16,4 +16,6 @@ Test-Suite hspec
   hs-source-dirs: test
   type: exitcode-stdio-1.0
   main-is: HSpecTests.hs
-  build-depends: base,hspec,Permutations2
+  build-depends: base
+                ,hspec
+                ,Permutations2
