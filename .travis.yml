@@ -4,6 +4,6 @@ git:
   depth: 1
 sudo: false
 install: 
-  - echo ""
+  - cabal install HSpec
 script:
   - ./test_all.sh
