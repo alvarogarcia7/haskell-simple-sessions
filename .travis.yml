@@ -1,0 +1,9 @@
+language: haskell
+ghc: 
+  - 8.0
+  - 7.4
+git:
+  depth: 1
+sudo: false
+script:
+  - ./test_all.sh
