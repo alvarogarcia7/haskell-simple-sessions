@@ -5,5 +5,7 @@ ghc:
 git:
   depth: 1
 sudo: false
+install: 
+  - echo ""
 script:
   - ./test_all.sh
