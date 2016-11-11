@@ -4,7 +4,7 @@ Description:         Practicing permutations
 License:             BSD3
 License-file:        LICENSE
 Build-Type:          Simple
-Cabal-Version:       >=1.22
+Cabal-Version:       >=1.18
    
 Library
   hs-source-dirs:   src
