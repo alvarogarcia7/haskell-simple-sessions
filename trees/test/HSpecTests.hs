@@ -15,6 +15,6 @@ main = hspec $ do
         it "with one level only, with two functions only" $ do
             ((unfoldTree 0 [id, id] 1) :: [[Int]]) `shouldBe` ([[0],[0],[0]] :: [[Int]])
 
-        it "with two levels, one function only" $ do
-            ((unfoldTree 0 [id] 2) :: [[Int]]) `shouldBe` ([[0],[[0],[0]]] :: [[Int]])
+--        it "with two levels, one function only" $ do
+--            ((unfoldTree 0 [id] 2) :: [[Int]]) `shouldBe` ([[0],[[0],[0]]] :: [[Int]])
 
