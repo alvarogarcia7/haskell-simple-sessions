@@ -21,3 +21,6 @@ main = hspec $ do
     describe "the Tree structure" $ do
         it "can be empty" $ do
             depth Empty `shouldBe` 0
+
+        it "can be of depth 1" $ do
+            depth ((Root 1) Empty Empty) `shouldBe` 1
