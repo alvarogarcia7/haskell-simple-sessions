@@ -9,6 +9,6 @@ main = hspec $ do
             ((unfoldTree 0 [] 1) :: [[Int]]) `shouldBe` ([] :: [[Int]])
 
         -- this returns a list of elements (size 2)
-        it "with one level only" $ do
+        it "with one level only, with one function only" $ do
             ((unfoldTree 0 [id] 1) :: [[Int]]) `shouldBe` ([[0],[0]] :: [[Int]])
 
