@@ -1,0 +1,21 @@
+Name:                Trees
+Version:             0.0.1
+Description:         Practicing generating trees
+License:             BSD3
+License-file:        LICENSE
+Build-Type:          Simple
+Cabal-Version:       >=1.18
+   
+Library
+  hs-source-dirs:   src
+  Build-Depends:     base >= 3 && < 5
+  Exposed-modules:   Trees
+  ghc-options:       -Wall
+
+Test-Suite hspec
+  hs-source-dirs: test
+  type: exitcode-stdio-1.0
+  main-is: HSpecTests.hs
+  build-depends: base
+                ,hspec
+                ,Trees
