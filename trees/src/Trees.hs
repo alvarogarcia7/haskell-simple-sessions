@@ -9,6 +9,7 @@ data Tree a = Empty
              | Root a (Tree a) (Tree a)
 
 depth :: Tree a -> Int
-depth t = 0
+depth Empty = 0
+depth (Root root left right) = 1 + depth left
     
 
