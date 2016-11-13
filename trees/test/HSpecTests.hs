@@ -18,3 +18,6 @@ main = hspec $ do
 --        it "with two levels, one function only" $ do
 --            ((unfoldTree 0 [id] 2) :: [[Int]]) `shouldBe` ([[0],[[0],[0]]] :: [[Int]])
 
+    describe "the Tree structure" $ do
+        it "can be empty" $ do
+            depth Empty `shouldBe` 0
