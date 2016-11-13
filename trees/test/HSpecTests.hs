@@ -8,3 +8,6 @@ main = hspec $ do
         it "for the empty root" $ do
             ((unfoldTree [] [id] 1) :: [[Int]]) `shouldBe` ([[],[],[]] :: [[Int]])
 
+        it "for the empty array of unfolding functions" $ do
+            ((unfoldTree [] [] 1) :: [[Int]]) `shouldBe` ([] :: [[Int]])
+
