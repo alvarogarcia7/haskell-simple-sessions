@@ -22,5 +22,9 @@ main = hspec $ do
         it "can be empty" $ do
             depth Empty `shouldBe` 0
 
-        it "can be of depth 1" $ do
+        it "can be balanced and having depth 1" $ do
             depth ((Root 1) Empty Empty) `shouldBe` 1
+
+        it "can be unbalanced, being deeper on the right" $ do
+            depth ((Root 1) Empty (Root 2 Empty Empty)) `shouldBe` 2
+
