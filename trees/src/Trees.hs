@@ -6,7 +6,7 @@ unfoldTree root [] depth = []
 unfoldTree root fns 1 = [root]:(map (\i -> [i]) (map (\fn -> fn root) fns))
 
 data Tree a = Empty 
-             | Root a (Tree a) (Tree a)
+             | Root a (Tree a) (Tree a) deriving (Show, Eq)
 
 depth :: Tree a -> Int
 depth Empty = 0
