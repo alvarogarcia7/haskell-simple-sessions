@@ -8,6 +8,7 @@ main = hspec $ do
         it "for the empty array of unfolding functions" $ do
             ((unfoldTree 0 [] 1) :: [[Int]]) `shouldBe` ([] :: [[Int]])
 
+        -- this returns a list of elements (size 2)
         it "with one level only" $ do
             ((unfoldTree 0 [id] 1) :: [[Int]]) `shouldBe` ([[0],[0]] :: [[Int]])
 
