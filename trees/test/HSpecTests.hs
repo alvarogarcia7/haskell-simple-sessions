@@ -9,5 +9,5 @@ main = hspec $ do
             ((unfoldTree 0 [] 1) :: [[Int]]) `shouldBe` ([] :: [[Int]])
 
         it "with one level only" $ do
-            ((unfoldTree 0 [id] 1) :: [[Int]]) `shouldBe` ([[0],[0],[0]] :: [[Int]])
+            ((unfoldTree 0 [id] 1) :: [[Int]]) `shouldBe` ([[0],[0]] :: [[Int]])
 

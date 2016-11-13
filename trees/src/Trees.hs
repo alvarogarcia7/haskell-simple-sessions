@@ -3,4 +3,4 @@ module Trees where
 
 unfoldTree :: a -> [a -> a] -> Int -> [[a]]
 unfoldTree root [] depth = []
-unfoldTree root _ 1 = [[root],[root],[root]]
+unfoldTree root fns 1 = [root]:(map (\i -> [i]) (map (\fn -> fn root) fns))
