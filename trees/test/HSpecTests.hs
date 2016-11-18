@@ -38,5 +38,5 @@ main = hspec $ do
             it "appends a root and its children" $ do
                 let leftTree = Root "left" []
                 let rightTree = Root "right" []
-                (buildTree "root" [leftTree, rightTree]) `shouldBe` (Root "root" [(Root "left" []), (Root "right" [])])
+                (buildTree "root" [leftTree, rightTree]) `shouldBe` (Root "root" [leftTree, rightTree])
 
