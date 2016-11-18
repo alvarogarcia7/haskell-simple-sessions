@@ -34,3 +34,8 @@ main = hspec $ do
         it "can be unbalanced, being deeper on the left" $ do
             depth ((Root 1) [(Root 2 []) ]) `shouldBe` 2
 
+        describe "build a tree" $ do
+            let treeLeft = Root "left" []
+            let treeRight = Root "right" []
+            buildTree "root" [treeLeft treeRight] `shouldBe` (Tree "root" [(Root "left", []), (Root "right" [])])
+
