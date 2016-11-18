@@ -29,8 +29,8 @@ main = hspec $ do
             depth ((Root 1) []) `shouldBe` 1
 
         it "can be unbalanced, being deeper on the right" $ do
-            depth ((Root 1) [Empty, (Root 2 [Empty])]) `shouldBe` 2
+            depth ((Root 1) [Empty, (Root 2 [])]) `shouldBe` 2
 
         it "can be unbalanced, being deeper on the left" $ do
-            depth ((Root 1) [(Root 2 [Empty]), Empty]) `shouldBe` 2
+            depth ((Root 1) [(Root 2 []) ]) `shouldBe` 2
 
