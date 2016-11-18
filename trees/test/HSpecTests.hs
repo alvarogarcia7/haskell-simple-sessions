@@ -25,6 +25,9 @@ main = hspec $ do
         it "can be balanced and having depth 1" $ do
             depth ((Root 1) [Empty]) `shouldBe` 1
 
+        it "can be balanced and having depth 1 - just another way of representing the same tree" $ do
+            depth ((Root 1) []) `shouldBe` 1
+
         it "can be unbalanced, being deeper on the right" $ do
             depth ((Root 1) [Empty, (Root 2 [Empty])]) `shouldBe` 2
 

@@ -10,6 +10,7 @@ data Tree a = Empty
 
 depth :: Tree a -> Int
 depth Empty = 0
+depth (Root root []) = 1
 depth (Root root children) = 1 + foldl1 max (map depth children)
     
 
