@@ -35,7 +35,6 @@ main = hspec $ do
             depth ((Root 1) [(Root 2 []) ]) `shouldBe` 2
 
         describe "build a tree" $ do
-            let treeLeft = Root "left" []
-            let treeRight = Root "right" []
-            buildTree "root" [treeLeft treeRight] `shouldBe` (Tree "root" [(Root "left", []), (Root "right" [])])
+            it "appends a root and its children" $ do
+            (buildTree "root" [Root "left" [], Root "right" []]) `shouldBe` (Root "root" [(Root "left" []), (Root "right" [])])
 

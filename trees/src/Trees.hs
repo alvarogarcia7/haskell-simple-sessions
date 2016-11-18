@@ -13,4 +13,5 @@ depth Empty = 0
 depth (Root root []) = 1
 depth (Root root children) = 1 + foldl1 max (map depth children)
     
-
+buildTree :: a -> [Tree a] -> Tree a
+buildTree root children = Root root children
