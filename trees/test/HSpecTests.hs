@@ -19,20 +19,21 @@ main = hspec $ do
 --            ((unfoldTree 0 [id] 2) :: [[Int]]) `shouldBe` ([[0],[[0],[0]]] :: [[Int]])
 
     describe "the Tree structure" $ do
-        it "can be empty" $ do
-            depth Empty `shouldBe` 0
+        describe "has a depth" $ do
+            it "can be empty" $ do
+                depth Empty `shouldBe` 0
 
-        it "can be balanced and having depth 1" $ do
-            depth ((Root 1) [Empty]) `shouldBe` 1
+            it "can be balanced and having depth 1" $ do
+                depth ((Root 1) [Empty]) `shouldBe` 1
 
-        it "can be balanced and having depth 1 - just another way of representing the same tree" $ do
-            depth ((Root 1) []) `shouldBe` 1
+            it "can be balanced and having depth 1 - just another way of representing the same tree" $ do
+                depth ((Root 1) []) `shouldBe` 1
 
-        it "can be unbalanced, being deeper on the right" $ do
-            depth ((Root 1) [Empty, (Root 2 [])]) `shouldBe` 2
+            it "can be unbalanced, being deeper on the right" $ do
+                depth ((Root 1) [Empty, (Root 2 [])]) `shouldBe` 2
 
-        it "can be unbalanced, being deeper on the left" $ do
-            depth ((Root 1) [(Root 2 []) ]) `shouldBe` 2
+            it "can be unbalanced, being deeper on the left" $ do
+                depth ((Root 1) [(Root 2 []) ]) `shouldBe` 2
 
         describe "build a tree" $ do
             it "appends a root and its children" $ do
