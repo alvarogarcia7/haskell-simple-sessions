@@ -6,7 +6,7 @@ import Text.Printf (printf)
 main = hspec $ do
     describe "unfolds a tree" $ do
         it "for the empty array of unfolding functions" $ do
-            ((unfoldTree 0 [] 1) :: Tree Int) `shouldBe` (Root 0 [] :: Tree Int)
+            (unfoldTree 0 [] 1) `shouldBe` (Root 0 [] :: Tree Int)
 
         -- this returns a list of elements (size 2)
         it "with one level only, with one function only" $ do
