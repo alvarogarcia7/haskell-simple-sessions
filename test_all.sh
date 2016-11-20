@@ -10,6 +10,8 @@ for project in $projects; do
   cd $project
   if [[ -e "Makefile" ]]; then
       if [[ -e ".projectignore" ]]; then
+        echo "Requested to skip project $project. Skipping"
+        cd ..
         continue
       fi
     echo "Executing project $project"
