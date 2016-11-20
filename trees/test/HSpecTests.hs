@@ -10,13 +10,13 @@ main = hspec $ do
 
         -- this returns a list of elements (size 2)
         it "with one level only, with one function only" $ do
-            ((unfoldTree 0 [id] 1)) `shouldBe` (Root 0 [Root 0 []] :: Tree Int)
+            ((unfoldTree 0 [id] 1)) `shouldBe` (Root 0 [leaf 0] :: Tree Int)
 
         it "with one level only, with two functions only" $ do
-            ((unfoldTree 0 [id, id] 1)) `shouldBe` (Root 0 [Root 0 [], Root 0 []] :: Tree Int)
+            ((unfoldTree 0 [id, id] 1)) `shouldBe` (Root 0 [leaf 0, leaf 0] :: Tree Int)
 
         it "with two levels, one function only" $ do
-            ((unfoldTree 0 [id] 2)) `shouldBe` (Root 0 [Root 0 [Root 0 []]])
+            ((unfoldTree 0 [id] 2)) `shouldBe` (Root 0 [Root 0 [leaf 0]])
 
     describe "the Tree structure" $ do
         describe "has a depth" $ do
