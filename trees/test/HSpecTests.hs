@@ -18,6 +18,9 @@ main = hspec $ do
         it "with two levels, one function only" $ do
             ((unfoldTree 0 [id] 2)) `shouldBe` (Root 0 [Root 0 [leaf 0]])
 
+        it "also works with deeper tree" $ do
+            depth (unfoldTree 0 [id] 100) `shouldBe` 101 
+
     describe "the Tree structure" $ do
         describe "has a depth" $ do
             it "can be empty" $ do
