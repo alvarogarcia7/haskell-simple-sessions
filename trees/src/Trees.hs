@@ -14,8 +14,7 @@ buildTree root children = Root root children
 
 unfoldTree :: a -> [a -> a] -> Int -> Tree a
 unfoldTree root [] depth = Root root []
-unfoldTree root fns 1 = Root root children where
-    children = map (\fn -> (Root (fn root) [])) fns
+unfoldTree root fns 0 = Root root []
 unfoldTree root fns n = Root root childrenTrees where
     childrenTrees = map (\child -> unfoldTree child fns (n-1)) children
     children = map (\fn -> fn root) fns
