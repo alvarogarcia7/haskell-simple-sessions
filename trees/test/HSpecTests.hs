@@ -6,17 +6,17 @@ import Text.Printf (printf)
 main = hspec $ do
     describe "unfolds a tree" $ do
         it "for the empty array of unfolding functions" $ do
-            ((unfoldTree 0 [] 1) :: Tree Int) `shouldBe` (leaf 0 :: Tree Int)
+            (unfoldTree 0 [] 1) `shouldBe` (leaf 0 :: Tree Int)
 
         -- this returns a list of elements (size 2)
         it "with one level only, with one function only" $ do
-            ((unfoldTree 0 [id] 1)) `shouldBe` (Root 0 [leaf 0] :: Tree Int)
+            (unfoldTree 0 [id] 1) `shouldBe` (Root 0 [leaf 0] :: Tree Int)
 
         it "with one level only, with two functions only" $ do
-            ((unfoldTree 0 [id, id] 1)) `shouldBe` (Root 0 [leaf 0, leaf 0] :: Tree Int)
+            (unfoldTree 0 [id, id] 1) `shouldBe` (Root 0 [leaf 0, leaf 0] :: Tree Int)
 
         it "with two levels, one function only" $ do
-            ((unfoldTree 0 [id] 2)) `shouldBe` (Root 0 [Root 0 [leaf 0]])
+            (unfoldTree 0 [id] 2) `shouldBe` (Root 0 [Root 0 [leaf 0]])
 
         it "also works with deeper tree" $ do
             depth (unfoldTree 0 [id] 100) `shouldBe` 101 
