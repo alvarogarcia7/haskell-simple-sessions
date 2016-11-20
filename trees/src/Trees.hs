@@ -15,7 +15,7 @@ leaf :: a -> Tree a
 leaf root = Root root []
 
 unfoldTree :: a -> [a -> a] -> Int -> Tree a
-unfoldTree root [] depth = Root root []
+unfoldTree root [] depth = leaf root
 unfoldTree root fns 0 = leaf root
 unfoldTree root fns n = Root root childrenTrees where
     childrenTrees = map (\child -> unfoldTree child fns (n-1)) children
