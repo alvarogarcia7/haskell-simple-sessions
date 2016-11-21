@@ -24,7 +24,7 @@ main = hspec $ do
 
     describe "Pascal's triangle" $ do
         it "calculates the first level" $ do
-            root (pascal 1) `shouldBe` 1
+            rootOf (pascal 1) `shouldBe` 1
 
     describe "the Tree structure" $ do
         describe "has a depth" $ do

@@ -11,7 +11,9 @@ depth (Root root children) = 1 + foldl1 max (map depth children)
 buildTree :: a -> [Tree a] -> Tree a
 buildTree root children = Root root children
 
-root (Root root _) = root
+rootOf (Root root _) = root
+childrenOf (Root _ children) = children
+nthChildren (Root _ children) nth = children !! nth
 
 leaf :: a -> Tree a
 leaf root = Root root []
