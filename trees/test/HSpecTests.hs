@@ -21,6 +21,11 @@ main = hspec $ do
         it "also works with deeper tree" $ do
             depth (unfoldTree 0 [id] 100) `shouldBe` 101 
 
+
+    describe "Pascal's triangle" $ do
+        it "calculates the first level" $ do
+            root (pascal 1) `shouldBe` 1
+
     describe "the Tree structure" $ do
         describe "has a depth" $ do
             it "can be empty" $ do
