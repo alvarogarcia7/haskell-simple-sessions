@@ -31,3 +31,7 @@ unfoldTree root fns n = Root root childrenTrees where
 pascal :: Int -> Tree Integer
 pascal 1 = leaf 1
 pascal 2 = appendChildren (pascal 1) [leaf 1, leaf 2, leaf 1]
+
+pair (Root root children) = reverse $ snd $ foldl
+    (\acc ele -> (ele, [fst acc,ele]:(snd acc)))
+        ((head children),[]) $ tail children
