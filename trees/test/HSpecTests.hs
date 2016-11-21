@@ -26,6 +26,9 @@ main = hspec $ do
         it "calculates the first level" $ do
             rootOf (pascal 1) `shouldBe` 1
 
+        it "calculates the second level" $ do
+            map rootOf (childrenOf (pascal 2)) `shouldBe` [1,2,1]
+
     describe "the Tree structure" $ do
         describe "has a depth" $ do
             it "can be empty" $ do
