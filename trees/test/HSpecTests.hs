@@ -29,6 +29,10 @@ main = hspec $ do
         it "calculates the second level" $ do
             map rootOf (childrenOf (pascal 2)) `shouldBe` [1,2,1]
 
+        describe "helper functions - pair" $ do
+            it "calculates pairs in order" $ do
+                (pair $ (Root 1 [leaf 2, leaf 3, leaf 4])) `shouldBe` [[Root 2 [],Root 3 []],[Root 3 [],Root 4 []]]
+
     describe "the Tree structure" $ do
         describe "has a depth" $ do
             it "can be empty" $ do
