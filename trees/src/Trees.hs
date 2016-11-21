@@ -11,6 +11,9 @@ depth (Root root children) = 1 + foldl1 max (map depth children)
 buildTree :: a -> [Tree a] -> Tree a
 buildTree root children = Root root children
 
+appendChildren :: Tree a -> [Tree a] -> Tree a
+appendChildren (Root root _) children = Root root children
+
 rootOf (Root root _) = root
 childrenOf (Root _ children) = children
 nthChildren (Root _ children) nth = children !! nth
@@ -26,4 +29,5 @@ unfoldTree root fns n = Root root childrenTrees where
     children = map (\fn -> fn root) fns
 
 pascal :: Int -> Tree Integer
-pascal depth = leaf 1
+pascal 1 = leaf 1
+pascal 2 = appendChildren (pascal 1) [leaf 1, leaf 2, leaf 1]
