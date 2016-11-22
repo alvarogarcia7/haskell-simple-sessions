@@ -31,7 +31,12 @@ unfoldTree root fns n = Root root childrenTrees where
 pascal :: Int -> Tree Integer
 pascal 1 = leaf 1
 pascal 2 = appendChildren (pascal 1) [leaf 1, leaf 2, leaf 1]
+pascal 3 = appendChildren pascal2 (unfoldPairs pascal2 (leaf 1) (\[l,r] -> leaf ((rootOf l) + (rootOf r)))) where
+    pascal2 = pascal 2
+    unfoldPairs tree boundary expansionFunction = boundary : expansion ++ [boundary] where
+        expansion = map expansionFunction (pair tree)
 
+pair :: Tree a -> [[Tree a]]
 pair (Root root children) = reverse $ snd $ foldl
     (\acc ele -> (ele, [fst acc,ele]:(snd acc)))
         ((head children),[]) $ tail children
