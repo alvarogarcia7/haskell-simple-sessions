@@ -21,4 +21,8 @@ main = hspec $ do
                 calculate "NOT T" `shouldBe` False
                 calculate "NOT F" `shouldBe` True
 
+        describe "operation AND" $ do  
+            it "case 1" $ do
+                calculate "T AND T" `shouldBe` True
+
 
