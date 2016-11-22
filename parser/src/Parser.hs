@@ -1,3 +1,3 @@
 module Parser where
 
-te = 1
+calculate "T" = True
