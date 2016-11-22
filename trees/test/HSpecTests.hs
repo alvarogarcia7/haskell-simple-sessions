@@ -34,7 +34,7 @@ main = hspec $ do
 --
         describe "helper functions - pair" $ do
             it "calculates pairs in order" $ do
-                (pair $ (Root 1 [leaf 2, leaf 3, leaf 4])) `shouldBe` [[Root 2 [],Root 3 []],[Root 3 [],Root 4 []]]
+                (pair $ (Root 1 [leaf 2, leaf 3, leaf 4])) `shouldBe` [Root 3 [leaf 2,leaf 3], Root 4 [leaf 3, leaf 4]]
 
     describe "the Tree structure" $ do
         describe "has a depth" $ do
