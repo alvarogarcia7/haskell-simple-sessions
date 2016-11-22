@@ -4,7 +4,8 @@ This is where I practice & test Haskell
 
 ### A new session
 
-Copy the folder `skeleton` into a new one and modify the `.cabal` file, the main file on `src` and the import on the tests
+  1. Copy the folder `skeleton` into a new one
+  1. modify the `.cabal` file, the main file on `src` and the import on the tests
 
 ### See also
 
