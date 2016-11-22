@@ -8,7 +8,7 @@ Cabal-Version:       >=1.18
    
 Library
   hs-source-dirs:   src
-  Build-Depends:     base >= 3 && < 5
+  Build-Depends:     base >= 3 && < 5, text
   Exposed-modules:   Parser
   ghc-options:       -Wall
 
