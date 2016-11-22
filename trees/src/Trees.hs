@@ -36,6 +36,8 @@ pascal 3 = appendChildren pascal2 (unfoldPairs pascal2 (leaf 1) (\[l,r] -> leaf 
     unfoldPairs tree boundary expansionFunction = boundary : expansion ++ [boundary] where
         expansion = map expansionFunction (pair tree)
 
+-- TODO: This needs to return a tree, with the element as the root and the pair as the children.
+-- Or the index as the root and the pair as the children. Limitation: only applies to Tree Integer (which is OK as Pascal's triangle is Tree Integer)
 pair :: Tree a -> [[Tree a]]
 pair (Root root children) = reverse $ snd $ foldl
     (\acc ele -> (ele, [fst acc,ele]:(snd acc)))
