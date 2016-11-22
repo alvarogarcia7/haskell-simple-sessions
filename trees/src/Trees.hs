@@ -33,10 +33,10 @@ pascal 1 = leaf 1
 pascal 2 = appendChildren (pascal 1) [leaf 1, leaf 2, leaf 1]
 -- TODO Based on the test, the tree must be returned in a well-formed fashion. Now the elements hang from any leaf
 -- TODO Defect: Only the elements at level 3 are returned, not the full triangle
-pascal 3 = appendChildren pascal2 (unfoldPairs pascal2 (leaf 1) (\[l,r] -> leaf ((rootOf l) + (rootOf r)))) where
+pascal 3 = (unfoldPairs pascal2 (leaf 1) (\[l,r] -> [leaf ((rootOf l) + (rootOf r))])) where
     pascal2 = pascal 2
-    unfoldPairs tree boundary expansionFunction = boundary : expansion ++ [boundary] where
-        expansion = map expansionFunction (pair tree)
+    unfoldPairs (Root root children) boundary expansionFunction = expansion where
+        expansion = appendChildren root $ map (\pair -> Root 1 (expansionFunction pair)) (pair (Root root children))
 
 -- TODO: This needs to return a tree, with the element as the root and the pair as the children.
 -- Or the index as the root and the pair as the children. Limitation: only applies to Tree Integer (which is OK as Pascal's triangle is Tree Integer)
