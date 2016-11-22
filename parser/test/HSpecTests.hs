@@ -19,5 +19,6 @@ main = hspec $ do
         describe "negated expressions" $ do  
             it "case 1" $ do
                 calculate "NOT T" `shouldBe` False
+                calculate "NOT F" `shouldBe` True
 
 
