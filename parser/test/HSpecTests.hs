@@ -25,4 +25,8 @@ main = hspec $ do
             it "case 1" $ do
                 calculate "T AND T" `shouldBe` True
 
+            it "supports multiple expressions" $ do
+                calculate "T AND T AND T" `shouldBe` True
+                calculate "T AND T AND F" `shouldBe` False
+
 
