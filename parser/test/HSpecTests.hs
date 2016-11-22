@@ -29,4 +29,7 @@ main = hspec $ do
                 calculate "T AND T AND T" `shouldBe` True
                 calculate "T AND T AND F" `shouldBe` False
 
+        describe "combining multiple operations" $ do
+            it "AND and NOT" $ do
+                calculate "T AND NOT F" `shouldBe` True
 
