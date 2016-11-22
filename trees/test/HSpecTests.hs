@@ -23,12 +23,12 @@ main = hspec $ do
 
 
     describe "Pascal's triangle" $ do
---        it "calculates the first level" $ do
---            rootOf (pascal 1) `shouldBe` 1
---
---        it "calculates the second level" $ do
---            map rootOf (childrenOf (pascal 2)) `shouldBe` [1,2,1]
---
+        it "calculates the first level" $ do
+            rootOf (pascal 1) `shouldBe` 1
+
+        it "calculates the second level" $ do
+            map rootOf (childrenOf (pascal 2)) `shouldBe` [1,2,1]
+
 --        it "calculates the third level" $ do
 --            (childrenOf (pascal 3)) `shouldBe` [Root 1 [leaf 1, leaf 3], Root 2 [leaf 3], Root 1 [leaf 1]]
 --
