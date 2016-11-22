@@ -13,3 +13,6 @@ main = hspec $ do
             it "parses T" $ do
                 calculate "T" `shouldBe` True
 
+            it "parses F" $ do
+                calculate "F" `shouldBe` False
+
