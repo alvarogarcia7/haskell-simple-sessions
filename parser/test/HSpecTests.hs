@@ -33,6 +33,9 @@ main = hspec $ do
             it "case 1" $ do
                 calculate "F OR F" `shouldBe` False
 
+            it "case 2" $ do
+                calculate "T OR F" `shouldBe` True
+
         describe "combining multiple operations" $ do
             it "AND and NOT" $ do
                 calculate "T AND NOT F" `shouldBe` True
