@@ -6,6 +6,6 @@ calculate "T" = True
 calculate "F" = False
 calculate ('N':'O':'T':' ':rest) = not $ calculate rest
 calculate expression = do
-    let andDelimiter = T.pack " AND "
-    let expressionParts =  map T.unpack $ T.splitOn andDelimiter (T.pack expression)
+    let delimiters = map T.pack [" AND ", " OR "]
+    let expressionParts =  map T.unpack $ foldl (\acc ele -> concat $ map (T.splitOn ele) acc) [T.pack expression] delimiters
     foldl1 (&&) $ map calculate expressionParts
