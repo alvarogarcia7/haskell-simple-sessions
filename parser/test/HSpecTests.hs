@@ -33,3 +33,6 @@ main = hspec $ do
             it "AND and NOT" $ do
                 calculate "T AND NOT F" `shouldBe` True
 
+            it "NOT and NOT" $ do
+                calculate "NOT NOT F" `shouldBe` False
+
