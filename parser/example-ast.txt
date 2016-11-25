@@ -1,0 +1,5 @@
+*Parser> apply ((Operation (&&) [Literal False, Literal True]))
+False
+
+*Parser> (Operation (&&) [Literal 1, Literal 2])
+function [literalliteral]

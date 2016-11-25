@@ -21,3 +21,5 @@ instance Show (AST a b) where
 apply :: AST (typ -> typ ->typ) typ -> typ
 apply (Operation fn children) = fn (apply (children !! 0)) (apply (children !! 1))
 apply (Literal l) = l
+
+-- See example-ast.txt
