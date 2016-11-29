@@ -34,8 +34,7 @@ calculate' expression = do
 	let delimiters = map T.pack [" "]
 	let expressionParts =  map T.unpack $ foldl (\acc ele -> concat $ map (T.splitOn ele) acc) [T.pack expression] delimiters
 	let parts = map parse expressionParts
-	let fn = case (parts !! 1) of
-		(AND) -> (myAnd)
+	let fn = parseFn (parts !! 1)
 	Operation fn [Literale (parts !! 0), Literale (parts !! 2)]
 
 myAnd :: Literale -> Literale -> Literale
@@ -46,6 +45,9 @@ myAnd BTrue BTrue = BTrue
 data Literale = BTrue
 	      | BFalse 
 	      | AND
+
+parseFn :: Literale -> (Literale -> Literale -> Literale)
+parseFn AND = myAnd
 
 instance Show Literale where
 	show BTrue = "True"
