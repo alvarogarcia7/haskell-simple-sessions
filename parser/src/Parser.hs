@@ -31,11 +31,11 @@ apply (Literale l) = l
 --calculate' "AND" = "&&"
 --calculate' "OR" = "||"
 calculate' expression = do
-	let delimiters = map T.pack [" "]
-	let expressionParts =  map T.unpack $ foldl (\acc ele -> concat $ map (T.splitOn ele) acc) [T.pack expression] delimiters
-	let parts = map parse expressionParts
-	let fn = parseFn (parts !! 1)
-	Operation fn [Literale (parts !! 0), Literale (parts !! 2)]
+  let delimiters = map T.pack [" "]
+  let expressionParts =  map T.unpack $ foldl (\acc ele -> concat $ map (T.splitOn ele) acc) [T.pack expression] delimiters
+  let parts = map parse expressionParts
+  let fn = parseFn (parts !! 1)
+  Operation fn [Literale (parts !! 0), Literale (parts !! 2)]
 
 myAnd :: Literale -> Literale -> Literale
 myAnd _ BFalse = BFalse
@@ -43,20 +43,20 @@ myAnd BFalse _ = BFalse
 myAnd BTrue BTrue = BTrue
 
 data Literale = BTrue
-	      | BFalse 
-	      | AND
+        | BFalse 
+        | AND
 
 parseFn :: Literale -> (Literale -> Literale -> Literale)
 parseFn AND = myAnd
 
 instance Show Literale where
-	show BTrue = "True"
-	show BFalse = "False"
-	show AND = "&&"
+  show BTrue = "True"
+  show BFalse = "False"
+  show AND = "&&"
 
 parse :: [Char] -> Literale
 parse b =
-	case b of 
-	 ("T") -> BTrue
-	 ("F") -> BFalse
-	 ("AND") -> AND
+  case b of 
+   ("T") -> BTrue
+   ("F") -> BFalse
+   ("AND") -> AND
