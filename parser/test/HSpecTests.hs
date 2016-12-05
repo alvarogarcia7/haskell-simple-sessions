@@ -58,3 +58,7 @@ main = hspec $ do
       (apply $ parse "T AND T AND T AND F") `shouldBe` False
       (apply $ parse "T AND T AND T AND F AND T AND T AND T AND T") `shouldBe` False
 
+    it "evaluates an expression with multiple OR operators" $ do
+      (apply $ parse "T OR T OR F") `shouldBe` True
+      (apply $ parse "T OR T OR T OR F") `shouldBe` True
+      (apply $ parse "T OR T OR T OR F OR T OR T OR T OR T") `shouldBe` True
