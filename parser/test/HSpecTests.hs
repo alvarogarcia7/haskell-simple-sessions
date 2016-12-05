@@ -41,5 +41,5 @@ main = hspec $ do
         calculate "NOT NOT F" `shouldBe` False
 
   describe "new method" $ do
-  it "evaluates an expression of one operator" $ do
-    (apply $ parse "T AND T") `shouldBe` True
+    it "evaluates an expression of one operator" $ do
+      (apply $ parse "T AND T") `shouldBe` True
