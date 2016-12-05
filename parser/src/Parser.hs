@@ -30,8 +30,13 @@ parse expression = do
   let delimiters = map T.pack [" "]
   let expressionParts =  map T.unpack $ foldl (\acc ele -> concat $ map (T.splitOn ele) acc) [T.pack expression] delimiters
   let parts = map parse' expressionParts
+  let (operand1:_:operand2:rest) = parts
   let operandRepresentation = expressionParts !! 1
-  parseOp operandRepresentation  [parts !! 0, parts !! 2]
+  let tree1 = parseOp operandRepresentation  [operand1, operand2]
+  if (null rest) then
+      tree1
+    else
+      parseOp (expressionParts !! 3) [tree1, parts !! 4]
 
 parse' :: String -> AST (Bool -> Bool -> Bool) Bool
 parse' b =
