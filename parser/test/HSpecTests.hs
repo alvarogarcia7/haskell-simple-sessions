@@ -56,4 +56,5 @@ main = hspec $ do
     it "evaluates an expression with multiple AND operators" $ do
       (apply $ parse "T AND T AND F") `shouldBe` False
       (apply $ parse "T AND T AND T AND F") `shouldBe` False
+      (apply $ parse "T AND T AND T AND F AND T AND T AND T AND T") `shouldBe` False
 
