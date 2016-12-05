@@ -26,17 +26,12 @@ apply (Literal l) = l
 
 -- See example-ast.txt
 
-
---calculate' "T" = "True"
---calculate' "F" = "False"
---calculate' "NOT" = "not"
---calculate' "AND" = "&&"
---calculate' "OR" = "||"
 parse expression = do
   let delimiters = map T.pack [" "]
   let expressionParts =  map T.unpack $ foldl (\acc ele -> concat $ map (T.splitOn ele) acc) [T.pack expression] delimiters
   let parts = map parse' expressionParts
-  parseOp (expressionParts !! 1)  [parts !! 0, parts !! 2]
+  let operandRepresentation = expressionParts !! 1
+  parseOp operandRepresentation  [parts !! 0, parts !! 2]
 
 parse' :: String -> AST (Bool -> Bool -> Bool) Bool
 parse' b =
