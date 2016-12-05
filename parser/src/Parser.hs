@@ -40,8 +40,13 @@ parse expression = do
 parse2 tree1 parsed raw = 
   if (null raw) then
       tree1
-    else
-      parseOp (raw !! 0) [tree1, parsed !! 1]
+    else do
+        let operator = raw !! 0
+        let operand = parsed !! 1
+        let (_:_:parsedRest) = parsed
+        let (_:_:rawRest) = raw
+        let currentTree = parseOp operator [tree1, parsed !! 1]
+        parse2 currentTree parsedRest rawRest
 
 parse' :: String -> AST (Bool -> Bool -> Bool) Bool
 parse' b =
