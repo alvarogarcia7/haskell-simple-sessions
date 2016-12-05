@@ -31,7 +31,7 @@ parse expression = do
   let expressionParts =  map T.unpack $ foldl (\acc ele -> concat $ map (T.splitOn ele) acc) [T.pack expression] delimiters
   let parts = map parse' expressionParts
   let (operand1:_:operand2:restParts) = parts
-  let (_:_:_:restExpressions) = expressionParts
+  let restExpressions = consume3 expressionParts
   let operandRepresentation = expressionParts !! 1
   let tree1 = parseOp operandRepresentation  [operand1, operand2]
   parse2 tree1 restParts restExpressions
@@ -43,10 +43,13 @@ parse2 tree1 parsed raw =
     else do
         let operator = raw !! 0
         let operand = parsed !! 1
-        let (_:_:parsedRest) = parsed
-        let (_:_:rawRest) = raw
-        let currentTree = parseOp operator [tree1, parsed !! 1]
+        let parsedRest = consume2 parsed
+        let rawRest = consume2 raw
+        let currentTree = parseOp operator [tree1, operand]
         parse2 currentTree parsedRest rawRest
+
+consume2 (_:_:xs) = xs
+consume3 (_:_:_:xs) = xs
 
 parse' :: String -> AST (Bool -> Bool -> Bool) Bool
 parse' b =
