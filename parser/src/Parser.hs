@@ -29,24 +29,19 @@ apply (Literal l) = l
 parse expression = do
   let delimiters = map T.pack [" "]
   let expressionParts =  map T.unpack $ foldl (\acc ele -> concat $ map (T.splitOn ele) acc) [T.pack expression] delimiters
-  let parts = map parse' expressionParts
-  let (operand1:_:operand2:restParts) = parts
-  let restExpressions = consume3 expressionParts
-  let operandRepresentation = expressionParts !! 1
-  let tree1 = parseOp operandRepresentation  [operand1, operand2]
-  parse2 tree1 restParts restExpressions
+  let operand1 = parse' (expressionParts !! 0)
+  let (_:restExpressions) = expressionParts
+  parse2 operand1 restExpressions
 
-
-parse2 tree1 parsed raw = 
+parse2 tree1 raw = 
   if (null raw) then
       tree1
     else do
         let operator = raw !! 0
-        let operand = parsed !! 1
-        let parsedRest = consume2 parsed
+        let operand = parse' $ raw !! 1
         let rawRest = consume2 raw
         let currentTree = parseOp operator [tree1, operand]
-        parse2 currentTree parsedRest rawRest
+        parse2 currentTree rawRest
 
 consume2 (_:_:xs) = xs
 consume3 (_:_:_:xs) = xs
