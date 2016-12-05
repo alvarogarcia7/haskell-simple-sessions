@@ -53,3 +53,6 @@ main = hspec $ do
       (apply $ parse "F OR F") `shouldBe` False
       (apply $ parse "F OR T") `shouldBe` True
 
+    it "evaluates an expression with two AND operators" $ do
+      (apply $ parse "T AND T AND F") `shouldBe` False
+
