@@ -38,9 +38,10 @@ parse' b =
   case b of 
    ("T") -> Literal True
    ("F") -> Literal False
-   ("AND") -> Operation (&&) []
+   ("_") -> Operation (&&) []
 
 parseOp :: String -> [AST (Bool -> Bool -> Bool) Bool]-> AST (Bool -> Bool -> Bool) Bool
 parseOp expr otherOperands = 
   case expr of
     ("AND") -> Operation (&&) otherOperands
+    ("OR") -> Operation (||) otherOperands
