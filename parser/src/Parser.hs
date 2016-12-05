@@ -18,6 +18,7 @@ data AST op typ = Operation op [AST op typ]
 
 instance Show (AST a b) where
   show (Operation _ children) = "function [" ++ (concat $ map show children) ++ "]"
+  show (Literal b) = "Value"
 
 apply :: AST (typ -> typ ->typ) typ -> typ
 apply (Operation fn children) = fn (apply (children !! 0)) (apply (children !! 1))
