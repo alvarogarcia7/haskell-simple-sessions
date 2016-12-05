@@ -65,4 +65,5 @@ main = hspec $ do
 
     it "evaluates a mix of OR and AND" $ do
       (apply $ parse "T OR F AND T") `shouldBe` True -- the order of the parens does noes matter
+      (apply $ parse "T OR F AND T AND F") `shouldBe` False -- the order of the parens does noes matter
 
