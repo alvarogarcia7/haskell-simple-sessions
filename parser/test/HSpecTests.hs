@@ -43,3 +43,6 @@ main = hspec $ do
   describe "new method" $ do
     it "evaluates an expression of one operator" $ do
       (apply $ parse "T AND T") `shouldBe` True
+      (apply $ parse "T AND F") `shouldBe` False
+      (apply $ parse "F AND F") `shouldBe` False
+      (apply $ parse "F AND T") `shouldBe` False
