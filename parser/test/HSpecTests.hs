@@ -73,6 +73,7 @@ main = hspec $ do
       (apply $ parse "NOT NOT F") `shouldBe` False
       (apply $ parse "NOT NOT NOT NOT F") `shouldBe` False
 
+--    This feature is out scope for now
 --    it "NOT can be inside an AND operation" $ do
 --      (apply $ parse "F OR NOT F") `shouldBe` True 
 
