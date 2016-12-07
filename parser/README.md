@@ -14,7 +14,7 @@ This version splits the parsing (lexing and parsing) and the evaluation
 
 You can find the code in the production code, under the functions `parse` and `apply`. Also see the tests.
 
-### Version `school_of_haskell_project`
+### Version `school_of_haskell_project` (WIP)
 
 This version follows the School of Haskell project, by Bartosz Milewski.
 
