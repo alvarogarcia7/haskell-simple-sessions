@@ -20,7 +20,7 @@ The work for this version is in a branch called `parsing_with_own_types` ([Link]
 
 ### Version `school_of_haskell_project` (WIP)
 
-This version follows the School of Haskell project, by Bartosz Milewski.
+This version follows the [School of Haskell project][sohp], by Bartosz Milewski.
 
 You can find the code in the production code, also see the tests.
 
@@ -35,3 +35,5 @@ or
 ```
 make test
 ```
+
+[sohp]: https://www.schoolofhaskell.com/school/starting-with-haskell/basics-of-haskell
