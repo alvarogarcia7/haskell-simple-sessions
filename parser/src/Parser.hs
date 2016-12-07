@@ -29,9 +29,16 @@ apply (Literal l) = l
 parse expression = do
   let delimiters = map T.pack [" "]
   let expressionParts =  map T.unpack $ foldl (\acc ele -> concat $ map (T.splitOn ele) acc) [T.pack expression] delimiters
-  let operand1 = parse' (expressionParts !! 0)
-  let (_:restExpressions) = expressionParts
-  parse2 operand1 restExpressions
+  let isNot = (head expressionParts) == "NOT"
+  if isNot then 
+    do
+      let (_:restExpressions) = expressionParts
+      parseOp (expressionParts !! 0) [(parse' (expressionParts !! 1))]
+    else
+      do
+        let operand1 = parse' (expressionParts !! 0)
+        let (_:restExpressions) = expressionParts
+        parse2 operand1 restExpressions
 
 parse2 tree1 raw = 
   if (null raw) then
@@ -58,3 +65,4 @@ parseOp expr otherOperands =
   case expr of
     ("AND") -> Operation (&&) otherOperands
     ("OR") -> Operation (||) otherOperands
+    ("NOT") -> Operation (\a _ -> not a) (otherOperands++[parse' "T"])
