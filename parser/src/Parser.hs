@@ -29,11 +29,15 @@ apply (Literal l) = l
 parse expression = do
   let delimiters = map T.pack [" "]
   let expressionParts =  map T.unpack $ foldl (\acc ele -> concat $ map (T.splitOn ele) acc) [T.pack expression] delimiters
+  parseSeparated expressionParts
+
+parseSeparated :: [String] -> AST (Bool -> Bool -> Bool) Bool
+parseSeparated expressionParts = do
   let isNot = (head expressionParts) == "NOT"
   if isNot then 
     do
       let (_:restExpressions) = expressionParts
-      parseOp (expressionParts !! 0) [(parse' (expressionParts !! 1))]
+      parseOp (expressionParts !! 0) [(parseSeparated restExpressions)]
     else
       do
         let operand1 = parse' (expressionParts !! 0)
@@ -58,7 +62,7 @@ parse' b =
   case b of 
    ("T") -> Literal True
    ("F") -> Literal False
-   ("_") -> Operation (&&) []
+   (_) -> Operation (&&) []
 
 parseOp :: String -> [AST (Bool -> Bool -> Bool) Bool]-> AST (Bool -> Bool -> Bool) Bool
 parseOp expr otherOperands = 
