@@ -68,3 +68,7 @@ main = hspec $ do
       (apply $ parse "T OR F AND T") `shouldBe` True 
       (apply $ parse "T OR F AND T AND F") `shouldBe` False 
 
+    it "evaluates NOT" $ do
+      -- the order of the parens does not matter
+      (apply $ parse "NOT F") `shouldBe` True 
+
