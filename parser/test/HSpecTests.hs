@@ -72,4 +72,5 @@ main = hspec $ do
       -- the order of the parens does not matter
       (apply $ parse "NOT F") `shouldBe` True 
       (apply $ parse "NOT NOT F") `shouldBe` False
+      (apply $ parse "NOT NOT NOT NOT F") `shouldBe` False
 
