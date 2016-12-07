@@ -8,6 +8,8 @@ First version, using an unified parser and evaluator
 
 You can find the code in the production code, under the function `calculate`. Also see the tests.
 
+The work for this version is in a the `master` branch
+
 ### Version `parsing_with_own_types`
 
 This version splits the parsing (lexing and parsing) and the evaluation
