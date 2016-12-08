@@ -1,6 +1,10 @@
-## Parser session
+# Parser session
 
-Create a binary expression calculator that takes a string and returns a boolean
+## Problem description
+
+  * Create a binary expression calculator that takes a string and returns a boolean
+
+## Versions
 
 ### Version `simple`
 
