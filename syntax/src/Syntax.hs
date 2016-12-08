@@ -1,3 +1,6 @@
 module Syntax where
 
-te = 1
+letNotation =
+  let a = 1
+  in a
+
