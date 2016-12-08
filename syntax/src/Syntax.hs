@@ -9,3 +9,8 @@ letNotation =
 --letNotation =
 --  let a = 1
 --  a
+
+letNotation' = do
+  let a = 1
+  a + 1
+
