@@ -3,6 +3,7 @@
 ## Problem description
 
   * Create a binary expression calculator that takes a string and returns a boolean
+  * The valid operations are "AND", "NOT", "OR"
 
 ## Versions
 
