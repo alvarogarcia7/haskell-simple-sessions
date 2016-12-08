@@ -8,7 +8,7 @@ First version, using an unified parser and evaluator
 
 You can find the code in the production code, under the function `calculate`. Also see the tests.
 
-The work for this version is in the branch `parser/simple`
+The work for this version is in the branch `parser/simple` ([Link](https://github.com/alvarogarcia7/haskell-simple-sessions/tree/parser/simple/parser))
 
 ### Version `parsing_with_own_types`
 
