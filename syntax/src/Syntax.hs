@@ -1,5 +1,6 @@
 module Syntax where
 
+letNotation :: Integer
 letNotation =
   let a = 1
   in a
@@ -11,6 +12,7 @@ letNotation =
 --  let a = 1
 --  a
 
+letNotation' :: Integer
 letNotation' = do
   let a = 1
   a + 1
