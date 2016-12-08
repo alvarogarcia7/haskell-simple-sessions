@@ -17,3 +17,9 @@ letNotation' = do
   let a = 1
   a + 1
 
+lazyNames =
+  let
+    a = 4
+    x = undefined -- undefined is a name that cannot be defined. fails at runtime
+  in a
+

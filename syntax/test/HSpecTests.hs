@@ -17,4 +17,7 @@ main = hspec $ do
         it "needs a do block to put several expressions together" $ do
           letNotation' `shouldBe` 2
 
+    describe "laziness" $ do
+      it "in names" $ do
+        lazyNames `shouldBe` 4
 
