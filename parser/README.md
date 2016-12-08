@@ -16,7 +16,7 @@ This version splits the parsing (lexing and parsing) and the evaluation
 
 You can find the code in the production code, under the functions `parse` and `apply`. Also see the tests.
 
-The work for this version is in a branch called `parsing_with_own_types` ([Link](https://github.com/alvarogarcia7/haskell-simple-sessions/tree/parser/with_own_types/parser))
+The work for this version is in a branch called `parser/with_own_types` ([Link](https://github.com/alvarogarcia7/haskell-simple-sessions/tree/parser/with_own_types/parser))
 
 ### Version `school_of_haskell_project` (WIP)
 
