@@ -2,13 +2,13 @@
 
 Create a binary expression calculator that takes a string and returns a boolean
 
-### Version (master)
+### Version `simple`
 
 First version, using an unified parser and evaluator
 
 You can find the code in the production code, under the function `calculate`. Also see the tests.
 
-The work for this version is in a the `master` branch
+The work for this version is in the branch `parser/simple`
 
 ### Version `parsing_with_own_types`
 
