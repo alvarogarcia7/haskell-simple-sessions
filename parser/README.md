@@ -4,7 +4,7 @@
 
   * Create a binary expression calculator that takes a string and returns a boolean
   * The valid operations are "AND", "NOT", "OR"
-  * See full problem description at [problem-description.md](./problem-description.txt)
+  * See full problem description at [problem-description](./problem-description.txt)
 
 ## Versions
 
