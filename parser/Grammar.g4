@@ -1,6 +1,6 @@
 grammar Grammar;
 
-stat: expr (';' expr)*;
+stat: expr (';' expr)* ';'?;
 
 expr:   expr 'AND' expr
     |   expr 'OR' expr
