@@ -5,6 +5,7 @@ stat: expr (';' expr)* ';'?;
 expr:   expr 'AND' expr
     |   expr 'OR' expr
     |   'NOT' expr
+    |   '(' expr ')'
     |   BOOL         
     ;
 
