@@ -43,6 +43,8 @@ make grammarrun
 
 Input your expression. E.g., `T AND T`
 
+**Remember**: if you are working on the Cpp-target, 4.5.3 is not capable of it. Use 4.5.4-SNAPSHOT from Soft-gems (see links.md)
+
 ### Running the tests
 
 ```
