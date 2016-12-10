@@ -30,6 +30,19 @@ This version follows the [School of Haskell project][sohp], by Bartosz Milewski.
 
 You can find the code in the production code, also see the tests.
 
+### Version `antlr_grammar` (WIP)
+
+#### Installation
+
+```
+curl -O http://www.antlr.org/download/antlr-4.5.3-complete.jar
+$(make grammarinstall)
+make grammar
+make grammarrun
+```
+
+Input your expression. E.g., `T AND T`
+
 ### Running the tests
 
 ```
