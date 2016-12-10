@@ -7,10 +7,11 @@ Build-Type:          Simple
 Cabal-Version:       >=1.18
    
 Library
-  hs-source-dirs:   src
-  Build-Depends:     base >= 3 && < 5
-  Exposed-modules:   PoolBalls
-  ghc-options:       -Wall
+  hs-source-dirs: src
+  Build-Depends: base >= 3 && < 5,
+                 containers
+  Exposed-modules: PoolBalls
+  ghc-options: -Wall
 
 Test-Suite hspec
   hs-source-dirs: test
