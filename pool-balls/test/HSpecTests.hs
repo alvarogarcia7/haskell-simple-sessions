@@ -13,4 +13,4 @@ main = hspec $ do
       apply [0,1] [0,1,2] `shouldBe` [1,0,2]
 
     it "problem 1 - minimum number of swaps" $ do
-      reorder "YYR" "YRY" `shouldBe` [[0,1]]
+      reorder "ABC" "BAC" `shouldBe` [[0,1]]
