@@ -8,6 +8,7 @@ build:
 
 clean:
 	rm -f *.java *.tokens *.class
+	rm -f *Grammar*.cpp *.h
 	cabal clean
 
 grammarinstall:
