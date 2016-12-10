@@ -14,3 +14,6 @@ main = hspec $ do
 
     it "problem 1 - minimum number of swaps" $ do
       reorder "ABC" "BAC" `shouldBe` [[0,1]]
+
+    it "problem 1 - minimum number of swaps, given multiple paths" $ do
+      reorder "ABA" "BAA" `shouldBe` [[0,1]]
