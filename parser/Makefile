@@ -11,10 +11,12 @@ clean:
 	cabal clean
 
 grammarinstall:
+	./alias.sh
 	export CLASSPATH=".:${PWD}/antlr-4.5.3-complete.jar:${CLASSPATH}"
 
 grammar:
 	echo "ensure that you have run DOLLAR (make grammarinstall) before this"
+	#antlr4 = java -jar ${PWD}/antlr*.jar
 	java -jar ${PWD}/antlr*.jar Grammar.g4
 	javac Grammar*.java
 
