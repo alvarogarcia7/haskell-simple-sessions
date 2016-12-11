@@ -14,12 +14,12 @@ reorder current desired = reorder' current [] where
 findBest :: (Eq a, Ord a) => [a] -> [a] -> [Int]
 findBest current desired = do
   let allPossibleSwaps = possibleSwaps $ length current
-  let y = map (\swap -> (swap, fit desired $ apply swap current)) allPossibleSwaps :: [([Int], Int)]
+  let y = map (\swap -> (swap, fitnessFn desired $ apply swap current)) allPossibleSwaps :: [([Int], Int)]
   let best = foldl1 (\p1@(swap, fitness) p2@(swap', fitness') -> if (fitness' > fitness) then p2 else p1) y
   fst best
 
-fit:: Eq a => [a] -> [a] -> Int
-fit current desired = do
+fitnessFn :: Eq a => [a] -> [a] -> Int
+fitnessFn  current desired = do
   let mix = zip current desired
   let different = filter (\(a,b) -> a/=b) mix
   let fitness = -(length different)
