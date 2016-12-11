@@ -5,7 +5,7 @@ import Data.Foldable (toList)
 
 reorder current desired = reorder' current [] where
   reorder' current cumulatedSwaps = 
-    if (fit current desired) == 0 then
+    if current == desired then
       reverse $ cumulatedSwaps
       else do
           let bestSwap = findBest current desired
