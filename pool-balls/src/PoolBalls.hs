@@ -15,7 +15,7 @@ findBest :: (Eq a, Ord a) => [a] -> [a] -> [Int]
 findBest current desired = do
   let allPairs = pairs $ length current
   let y = (map (\swap -> (swap, fit desired $ apply swap current)) allPairs :: [([Int], Int)])
-  let best = foldl1 (\(swap,fitness) (swap',fitness') -> if (fitness' > fitness) then (swap',fitness') else (swap,fitness)) y
+  let best = foldl1 (\p1@(swap,fitness) p2@(swap',fitness') -> if (fitness' > fitness) then p2 else p1) y
   fst best
 
 fit:: Eq a => [a] -> [a] -> Int
