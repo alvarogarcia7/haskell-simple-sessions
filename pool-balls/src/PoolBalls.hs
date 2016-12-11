@@ -13,8 +13,8 @@ reorder current desired = reorder' current [] where
 
 findBest :: (Eq a, Ord a) => [a] -> [a] -> [Int]
 findBest current desired = do
-  let allPairs = pairs $ length current
-  let y = map (\swap -> (swap, fit desired $ apply swap current)) allPairs :: [([Int], Int)]
+  let allPossibleSwaps = pairs $ length current
+  let y = map (\swap -> (swap, fit desired $ apply swap current)) allPossibleSwaps :: [([Int], Int)]
   let best = foldl1 (\p1@(swap, fitness) p2@(swap', fitness') -> if (fitness' > fitness) then p2 else p1) y
   fst best
 
