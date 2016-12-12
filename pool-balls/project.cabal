@@ -10,6 +10,7 @@ Library
   hs-source-dirs: src
   Build-Depends: base >= 3 && < 5,
                  containers
+                 ,random
   Exposed-modules: PoolBalls
   ghc-options: -Wall
 
@@ -20,3 +21,6 @@ Test-Suite hspec
   build-depends: base
                 ,hspec
                 ,PoolBalls
+                ,QuickCheck
+                ,containers
+                ,random
