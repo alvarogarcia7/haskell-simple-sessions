@@ -21,6 +21,13 @@ Test-Suite hspec
   build-depends: base
                 ,hspec
                 ,PoolBalls
+
+Test-Suite properties
+  hs-source-dirs: test
+  type: exitcode-stdio-1.0
+  main-is: Properties.hs
+  build-depends: base
+                ,PoolBalls
                 ,QuickCheck
                 ,containers
                 ,random
