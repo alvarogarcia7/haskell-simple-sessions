@@ -1,3 +1,5 @@
+module PoolsTest where
+
 import PoolBalls
 
 import Debug.Trace
@@ -10,11 +12,17 @@ import Data.Map
  
 
 prop_halfWrongBalls :: String -> String -> Bool
-prop_halfWrongBalls balls b= False
---  let shuffled = fisherYates (mkStdGen 0) balls
---  let numberSwaps = length $ reorder balls (fst shuffled)
---  let prop = ceiling $ toRational numberSwaps / 2
---  let prop2 = fitnessFn balls
+prop_halfWrongBalls balls b= do
+  let shuffled = fst $ fisherYates (mkStdGen 0) balls
+  let numberOfSwaps = length $ reorder balls shuffled
+  let wrongBalls = - (fitnessFn balls shuffled) :: Int
+  let halfWrongBalls = ceiling ((toRational wrongBalls) / (toRational 2))
+  let satisfiesProperty =  numberOfSwaps <= halfWrongBalls
+  let info = pprint [("original", balls), ("shuffled", shuffled), ("halfWrongBalls", show halfWrongBalls), ("swaps", show numberOfSwaps), ("applies", show satisfiesProperty)]
+  -- collect ((show numberSwaps)++", "++(show prop)) $ property (prop == prop2)
+  trace info satisfiesProperty 
+
+pprint xs = unlines $ Prelude.map (\(a,b) -> a++(show b)) xs
   
 
 fisherYatesStep :: RandomGen g => (Map Int a, g) -> (Int, a) -> (Map Int a, g)
