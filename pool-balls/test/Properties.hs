@@ -15,8 +15,8 @@ prop_halfWrongBalls balls b= do
   let wrongBalls = - (fitnessFn balls shuffled) :: Int
   let halfWrongBalls = ceiling ((toRational wrongBalls) / (toRational 2))
   let satisfiesProperty =  numberOfSwaps <= halfWrongBalls
-  let info = pprint [("original", balls), ("shuffled", shuffled), ("halfWrongBalls", show halfWrongBalls), ("swaps", show numberOfSwaps), ("applies", show satisfiesProperty)]
-  trace info satisfiesProperty 
+  let info = pprint [("original", balls), ("shuffled", shuffled), ("halfWrongBalls", show halfWrongBalls), ("swaps", show numberOfSwaps), ("applies", show satisfiesProperty)] 
+    in trace info satisfiesProperty
 
 pprint xs = unlines $ Prelude.map (\(a,b) -> a++(show b)) xs
   
