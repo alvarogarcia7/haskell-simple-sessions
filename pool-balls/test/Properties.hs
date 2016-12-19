@@ -18,7 +18,7 @@ prop_halfWrongBalls balls b= do
   let info = pprint [("original", balls), ("shuffled", shuffled), ("halfWrongBalls", show halfWrongBalls), ("swaps", show numberOfSwaps), ("applies", show satisfiesProperty)] 
     in trace info satisfiesProperty
 
-pprint xs = unlines $ Prelude.map (\(a,b) -> a++(show b)) xs
+pprint xs = unlines $ Prelude.map (\(a,b) -> a++b) xs
   
 
 fisherYatesStep :: RandomGen g => (Map Int a, g) -> (Int, a) -> (Map Int a, g)
