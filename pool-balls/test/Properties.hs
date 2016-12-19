@@ -15,14 +15,12 @@ prop_halfWrongBalls balls b= do
   let wrongBalls = - (fitnessFn balls shuffled) :: Int
   let halfWrongBalls = ceiling ((toRational wrongBalls) / (toRational 2))
   let satisfiesProperty =  numberOfSwaps <= halfWrongBalls
-  let x = f [("a",1)]
-  let info = f [("original", balls), ("shuffled", shuffled), ("halfWrongBalls", show halfWrongBalls), ("swaps", show numberOfSwaps), ("applies", show satisfiesProperty)] 
+  let info = pprint [("original", balls), ("shuffled", shuffled), ("halfWrongBalls", show halfWrongBalls), ("swaps", show numberOfSwaps), ("applies", show satisfiesProperty)] 
     in trace info satisfiesProperty
 
-pprint xs = unlines $ Prelude.map (\(a,b) -> a++b) xs
 
-f :: Show b => [(String,b)] -> String
-f ((name,value):_)  = name++(show value)
+pprint :: Show b => [(String,b)] -> String
+pprint xs = unlines $ Prelude.map (\(a,b) -> a++(show b)) xs
 
 fisherYatesStep :: RandomGen g => (Map Int a, g) -> (Int, a) -> (Map Int a, g)
 fisherYatesStep (m, gen) (i, x) = ((insert j x . insert i (m ! j)) m, gen')
