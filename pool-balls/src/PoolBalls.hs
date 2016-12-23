@@ -35,7 +35,6 @@ findWorst current desired pastStates = do
   let worst = foldl1 minByFitness acceptableSwaps
   fst worst
 
-
 findBest :: (Ord a) => [a] -> [a] -> [Int]
 findBest current desired = do
   let allPossibleSwaps = possibleSwaps $ length current
@@ -51,7 +50,6 @@ fitnessFn  current desired = do
   let fitness = -(length different)
   fitness
     
-
 possibleSwaps :: Int -> [[Int]]
 possibleSwaps n = [[x,y] | y<-[0..n-1], x<-[0..y-1]]
 
