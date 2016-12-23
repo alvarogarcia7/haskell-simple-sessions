@@ -13,7 +13,7 @@ main = hspec $ do
     it "swaps the balls" $ do
       apply [0,1] "012" `shouldBe` "102"
 
-  describe "Problem 1: minimum number of swaps" $ do
+  describe "Problem 1, 2: minimum number of swaps" $ do
     it "Only one way of swapping" $ do
       reorder "ABC" "BAC" `shouldBe` [[0,1]]
 
