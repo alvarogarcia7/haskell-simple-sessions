@@ -3,6 +3,7 @@ module PoolBalls where
 import Data.Sequence (fromList, update)
 import Data.Foldable (toList)
 
+reorder :: Ord a => [a] -> [a] -> [[Int]]
 reorder current desired = reorder' current [] where
   reorder' currentState cumulatedSwaps =
     if currentState == desired then
