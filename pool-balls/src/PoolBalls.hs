@@ -55,6 +55,7 @@ fitnessFn  current desired = do
 possibleSwaps :: Int -> [[Int]]
 possibleSwaps n = [[x,y] | y<-[0..n-1], x<-[0..y-1]]
 
+apply :: [Int] -> [a] -> [a]
 apply swap@[from, to] balls = do
   let balls' = fromList balls
   let tmp = balls !! from
