@@ -25,8 +25,8 @@ findWorst current desired pastStates = do
   let allPossibleSwaps = possibleSwaps $ length current
   let swapAndItsResult = map (\swap -> (swap, apply swap current)) allPossibleSwaps
   let notIn needle haystack = not $ any (==needle) haystack
-  let newStates = filter (\p@(swap, result) -> notIn result pastStates) swapAndItsResult
-  let swapAndItsFitness = map (\(swap, newState) -> (swap, fitnessFn desired newState)) newStates :: [([Int], Int)]
+  let notVisitedStates = filter (\p@(swap, result) -> notIn result pastStates) swapAndItsResult
+  let swapAndItsFitness = map (\(swap, newState) -> (swap, fitnessFn desired newState)) notVisitedStates :: [([Int], Int)]
   let minFitnessLevel = fitnessFn desired current
   let acceptableSwaps = filter (\(_, fitness) -> fitness >= minFitnessLevel) swapAndItsFitness
   let minByFitness = (\first@(swap, fitness) second@(swap', fitness') -> if (fitness <= fitness') then first else second)
