@@ -20,4 +20,7 @@ main = hspec $ do
     it "Multiple ways of swapping" $ do
       reorder "ABA" "BAA" `shouldBe` [[0,1]]
 
-  
+  describe "Problem 3: maximum number of swaps" $ do
+    it "Only one way of swapping" $ do
+      reorderMax "AAB" "BAA" `shouldBe` [[1,2], [0,1]]
+

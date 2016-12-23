@@ -11,6 +11,8 @@ reorder current desired = reorder' current [] where
           let bestSwap = findBest current desired
           reorder' (apply bestSwap current) (bestSwap:cumulatedSwaps)
 
+reorderMax current desired = []
+
 findBest :: (Eq a, Ord a) => [a] -> [a] -> [Int]
 findBest current desired = do
   let allPossibleSwaps = possibleSwaps $ length current
