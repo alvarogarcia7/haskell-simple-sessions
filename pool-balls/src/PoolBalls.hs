@@ -20,7 +20,7 @@ reorderMax current desired = reorder' current [] [] where
           let bestSwap = findWorst current desired visitedStates
           reorder' (apply bestSwap current) (bestSwap:cumulatedSwaps) visitedStates
 
-findWorst :: (Eq a, Ord a) => [a] -> [a] -> [[a]]-> [Int]
+findWorst :: (Ord a) => [a] -> [a] -> [[a]]-> [Int]
 findWorst current desired pastStates = do
   let allPossibleSwaps = possibleSwaps $ length current
   let swapAndItsResult = map (\swap -> (swap, apply swap current)) allPossibleSwaps
