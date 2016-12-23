@@ -4,12 +4,12 @@ import Data.Sequence (fromList, update)
 import Data.Foldable (toList)
 
 reorder current desired = reorder' current [] where
-  reorder' current cumulatedSwaps = 
-    if current == desired then
+  reorder' currentState cumulatedSwaps =
+    if currentState == desired then
       reverse $ cumulatedSwaps
       else do
-          let bestSwap = findBest current desired
-          reorder' (apply bestSwap current) (bestSwap:cumulatedSwaps)
+          let bestSwap = findBest currentState desired
+          reorder' (apply bestSwap currentState) (bestSwap:cumulatedSwaps)
 
 reorderMax current desired = reorder' current [] [] where
   reorder' current cumulatedSwaps pastStates = 
