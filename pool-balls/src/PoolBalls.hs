@@ -62,4 +62,5 @@ apply [from, to] balls = do
   let firstReplaced = update from (balls !! to) $ balls'
   let secondReplaced = update to tmp firstReplaced
   toList secondReplaced
+apply _ _ = error "wrong ball swap"
   
