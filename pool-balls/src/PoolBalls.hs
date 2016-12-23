@@ -16,8 +16,9 @@ reorderMax current desired = reorder' current [] [] where
     if current == desired then
       reverse $ cumulatedSwaps
       else do
-          let bestSwap = findWorst current desired (current:pastStates)
-          reorder' (apply bestSwap current) (bestSwap:cumulatedSwaps) (current:pastStates)
+          let visitedStates = current:pastStates
+          let bestSwap = findWorst current desired visitedStates
+          reorder' (apply bestSwap current) (bestSwap:cumulatedSwaps) visitedStates
 
 findWorst :: (Eq a, Ord a) => [a] -> [a] -> [[a]]-> [Int]
 findWorst current desired pastStates = do
