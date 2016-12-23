@@ -11,7 +11,26 @@ reorder current desired = reorder' current [] where
           let bestSwap = findBest current desired
           reorder' (apply bestSwap current) (bestSwap:cumulatedSwaps)
 
-reorderMax current desired = []
+reorderMax current desired = reorder' current [] [] where
+  reorder' current cumulatedSwaps pastStates = 
+    if current == desired then
+      reverse $ cumulatedSwaps
+      else do
+          let bestSwap = findWorst current desired (current:pastStates)
+          reorder' (apply bestSwap current) (bestSwap:cumulatedSwaps) (current:pastStates)
+
+findWorst :: (Eq a, Ord a) => [a] -> [a] -> [[a]]-> [Int]
+findWorst current desired pastStates = do
+  let allPossibleSwaps = possibleSwaps $ length current
+  let swapAndItsResult = map (\swap -> (swap, apply swap current)) allPossibleSwaps
+  let newStates = filter (\p@(swap, result) -> not $ any (==result) pastStates) swapAndItsResult
+  let swapAndItsFitness = map (\(swap, newState) -> (swap, fitnessFn desired newState)) newStates :: [([Int], Int)]
+  let minFitnessLevel = fitnessFn desired current
+  let acceptableSwaps = filter (\(_, fitness) -> fitness >= minFitnessLevel) swapAndItsFitness
+  let minByFitness = (\first@(swap, fitness) second@(swap', fitness') -> if (fitness <= fitness') then first else second)
+  let best = foldl1 minByFitness acceptableSwaps
+  fst best
+
 
 findBest :: (Eq a, Ord a) => [a] -> [a] -> [Int]
 findBest current desired = do
