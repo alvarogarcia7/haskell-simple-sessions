@@ -12,6 +12,7 @@ reorder current desired = reorder' current [] where
           let bestSwap = findBest currentState desired
           reorder' (apply bestSwap currentState) (bestSwap:cumulatedSwaps)
 
+reorderMax :: Ord a => [a] -> [a] -> [[Int]]
 reorderMax current desired = reorder' current [] [] where
   reorder' currentState cumulatedSwaps pastStates =
     if currentState == desired then
