@@ -30,8 +30,8 @@ findWorst current desired pastStates = do
   let minFitnessLevel = fitnessFn desired current
   let acceptableSwaps = filter (\(_, fitness) -> fitness >= minFitnessLevel) swapAndItsFitness
   let minByFitness = (\first@(swap, fitness) second@(swap', fitness') -> if (fitness <= fitness') then first else second)
-  let best = foldl1 minByFitness acceptableSwaps
-  fst best
+  let worst = foldl1 minByFitness acceptableSwaps
+  fst worst
 
 
 findBest :: (Eq a, Ord a) => [a] -> [a] -> [Int]
