@@ -15,7 +15,8 @@ findBest :: (Eq a, Ord a) => [a] -> [a] -> [Int]
 findBest current desired = do
   let allPossibleSwaps = possibleSwaps $ length current
   let swapAndItsFitness = map (\swap -> (swap, fitnessFn desired $ apply swap current)) allPossibleSwaps :: [([Int], Int)]
-  let best = foldl1 (\p1@(swap, fitness) p2@(swap', fitness') -> if (fitness' > fitness) then p2 else p1) swapAndItsFitness
+  let maxByFitness = (\p1@(swap, fitness) p2@(swap', fitness') -> if (fitness' > fitness) then p2 else p1)
+  let best = foldl1 maxByFitness swapAndItsFitness
   fst best
 
 fitnessFn :: Eq a => [a] -> [a] -> Int
