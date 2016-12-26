@@ -29,11 +29,12 @@ findWorst current desired pastStates = do
       swapAndItsResult = map (\swap -> (swap, apply swap current)) allPossibleSwaps
       notIn needle haystack = not $ any (==needle) haystack
   let swapAndItsFitness = map (\(swap, newState) -> (swap, fitnessFn desired newState)) notVisitedStates :: [([Int], Int)]
-  let atLeast level = level >= minFitnessLevel where 
-      minFitnessLevel = fitnessFn desired current
-  let acceptableSwaps = filter (\(_, fitness) -> atLeast fitness) swapAndItsFitness
-  let minByFitness = (\first@(_, fitness) second@(_, fitness') -> if (fitness <= fitness') then first else second)
-  let worst = foldl1 minByFitness acceptableSwaps
+  let worst = foldl1 minByFitness acceptableSwaps where
+      atLeast level = level >= minFitnessLevel where 
+          minFitnessLevel = fitnessFn desired current
+      acceptableSwaps = filter (\(_, fitness) -> atLeast fitness) swapAndItsFitness
+      minByFitness = (\first@(_, fitness) second@(_, fitness') -> if (fitness <= fitness') then first else second)
+
   fst worst
 
 findBest :: (Ord a) => [a] -> [a] -> [Int]
