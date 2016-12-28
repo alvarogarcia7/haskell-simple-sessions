@@ -1,6 +1,6 @@
 module Parser where
 
-data Operation a = And (Operation a) (Operation a) 
+data Operation a = And (Operation a) (Operation a) (\a b -> a && b)
                  | Not (Operation a)
                  | Expression a
   deriving (Show, Eq)
