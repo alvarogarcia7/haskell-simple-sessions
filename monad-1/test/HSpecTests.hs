@@ -10,9 +10,9 @@ main = hspec $ do
 
   describe "applyting operations" $ do
     it "And" $ do
-      apply (And True True) `shouldBe` True
-      apply (And True False) `shouldBe` False
+      apply (And (Expression True) (Expression True)) `shouldBe` True
+      apply (And (Expression True) (Expression False)) `shouldBe` False
 
     it "Not" $ do
-      apply (Not True) `shouldBe` False
-      apply (Not False) `shouldBe` True
+      apply (Not (Expression True)) `shouldBe` False
+      apply (Not (Expression False)) `shouldBe` True
