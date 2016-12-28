@@ -8,7 +8,7 @@ main = hspec $ do
     it "truthy" $ do
       True `shouldBe` True
 
-  describe "applyting operations" $ do
+  describe "applying operations" $ do
     it "And" $ do
       apply (And (Expression True) (Expression True)) `shouldBe` True
       apply (And (Expression True) (Expression False)) `shouldBe` False
