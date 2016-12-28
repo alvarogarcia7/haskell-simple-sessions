@@ -3,8 +3,8 @@ import Parser
 import Test.Hspec
 import Text.Printf (printf)
 
-true = Expression True
-false = Expression False
+true = Literal True
+false = Literal False
 
 main = hspec $ do
   describe "canary" $ do

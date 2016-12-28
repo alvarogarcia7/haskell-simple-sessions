@@ -1,17 +1,17 @@
 module Parser where
 
-class Oper a where
-  apply :: Operation a -> a
-  new :: a -> Operation a
+class Operation a where
+  apply :: Expression a -> a
+  new :: a -> Expression a
 
-instance Oper Bool where
-  new b = Expression b
+instance Operation Bool where
+  new b = Literal b
   apply (And a b) = (apply a) && (apply b)
   apply (Not a) = not (apply a)
-  apply (Expression a) = a
+  apply (Literal a) = a
 
-data Operation a = And (Operation a) (Operation a) 
-                 | Not (Operation a)
-                 | Expression a
+data Expression a = And (Expression a) (Expression a) 
+                 | Not (Expression a)
+                 | Literal a
   deriving (Show, Eq)
 
