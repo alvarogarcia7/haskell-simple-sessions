@@ -12,18 +12,18 @@ main = hspec $ do
       True `shouldBe` True
 
   describe "applying operations" $ do
-    it "And" $ do
-      apply (And true true) `shouldBe` True
-      apply (And true false) `shouldBe` False
+    it "Op2" $ do
+      apply (Op2 true true) `shouldBe` True
+      apply (Op2 true false) `shouldBe` False
 
-    it "Not" $ do
-      apply (Not true) `shouldBe` False
-      apply (Not false) `shouldBe` True
+    it "Op1" $ do
+      apply (Op1 true) `shouldBe` False
+      apply (Op1 false) `shouldBe` True
   
   describe "nesting operations" $ do
-    it "Not" $ do
-      apply (Not (Not true)) `shouldBe` True
+    it "Op1" $ do
+      apply (Op1 (Op1 true)) `shouldBe` True
 
-    it "Not with And" $ do
-      apply (Not (And true true)) `shouldBe` False
+    it "Op1 with Op2" $ do
+      apply (Op1 (Op2 true true)) `shouldBe` False
 

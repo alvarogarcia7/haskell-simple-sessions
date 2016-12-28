@@ -6,12 +6,12 @@ class Operation a where
 
 instance Operation Bool where
   new b = Literal b
-  apply (And a b) = (apply a) && (apply b)
-  apply (Not a) = not (apply a)
+  apply (Op2 a b) = (apply a) && (apply b)
+  apply (Op1 a) = not (apply a)
   apply (Literal a) = a
 
-data Expression a = And (Expression a) (Expression a) 
-                 | Not (Expression a)
-                 | Literal a
+data Expression a = Op2 (Expression a) (Expression a) 
+                  | Op1 (Expression a)
+                  | Literal a
   deriving (Show, Eq)
 
