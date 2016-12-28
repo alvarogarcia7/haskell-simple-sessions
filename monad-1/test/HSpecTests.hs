@@ -21,4 +21,6 @@ main = hspec $ do
     it "Not" $ do
       apply (Not (Not (Expression True))) `shouldBe` True
 
+    it "Not with And" $ do
+      apply (Not (And (Expression True) (Expression True))) `shouldBe` False
 
