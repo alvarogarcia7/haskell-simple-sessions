@@ -1,3 +1,3 @@
 module Parser where
 
-te = 1
+data Operation a = And a a | Not a
