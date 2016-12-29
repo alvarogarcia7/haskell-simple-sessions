@@ -16,6 +16,11 @@ main = hspec $ do
       apply (Op2 "AND" true true) `shouldBe` True
       apply (Op2 "AND" true false) `shouldBe` False
 
+    it "OR" $ do
+      apply (Op2 "OR" true true) `shouldBe` True
+      apply (Op2 "OR" true false) `shouldBe` True
+      apply (Op2 "OR" false false) `shouldBe` False
+
     it "NOT" $ do
       apply (Op1 "NOT" true) `shouldBe` False
       apply (Op1 "NOT" false) `shouldBe` True
