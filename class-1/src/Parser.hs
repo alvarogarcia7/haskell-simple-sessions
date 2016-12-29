@@ -8,6 +8,7 @@ class Operation a where
 instance Operation Bool where
   new b = Literal b
   apply (Op2 "AND" a b) = (apply a) && (apply b)
+  apply (Op2 "OR" a b) = (apply a) || (apply b)
   apply (Op1 _ a) = not (apply a)
   apply (Literal a) = a
   parse s = Op2 "AND" (Literal True) (Literal False)
