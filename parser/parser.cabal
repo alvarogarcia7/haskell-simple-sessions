@@ -12,12 +12,21 @@ Library
                      ,text
                      ,parsec
   Exposed-modules:   Parser
+                    ,ParserWithParsec
   ghc-options:       -Wall
 
 Test-Suite hspec
   hs-source-dirs: test
   type: exitcode-stdio-1.0
   main-is: HSpecTests.hs
+  build-depends: base
+                ,hspec
+                ,Parser
+
+Test-Suite boolean
+  hs-source-dirs: test
+  type: exitcode-stdio-1.0
+  main-is: booleanTests.hs
   build-depends: base
                 ,hspec
                 ,Parser
