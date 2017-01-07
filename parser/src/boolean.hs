@@ -1,3 +1,5 @@
+module ParserWithParsec where
+
 import Text.Parsec
 import Text.Parsec.Expr
 import Text.Parsec.Token
