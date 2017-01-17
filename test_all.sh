@@ -15,6 +15,7 @@ for project in $projects; do
         continue
       fi
     echo "Executing project $project"
+    cabal install
     make test
   else
       echo "No makefile in $project. Skipping."
