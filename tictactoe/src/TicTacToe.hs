@@ -18,11 +18,11 @@ makeAMove game (x,y)= do
     let row = currentBoard !! x 
     let newRow = replaceAt row y (Just $ currentPlayer game)
     let newBoard = replaceAt currentBoard x newRow
-    Game {board=newBoard, currentPlayer=TicTacToe.flip $ currentPlayer game}
+    Game {board=newBoard, currentPlayer=flipPlayer $ currentPlayer game}
 
-flip :: Char -> Char
-flip 'X' = 'O'
-flip 'O' = 'X'
+flipPlayer :: Char -> Char
+flipPlayer 'X' = 'O'
+flipPlayer 'O' = 'X'
 
 replaceAt :: [a] -> Int -> a -> [a]
 replaceAt xs idx v = let (front, back) = splitAt idx xs in front ++ v:(drop 1 back)
