@@ -15,3 +15,7 @@ main = hspec $ do
     it "should have the first player as 'X'" $ do
        currentPlayer game `shouldBe` 'X' 
 
+    describe "first move only" $ do
+      it "should store the first movement" $ do
+        board (makeAMove initialGame (0,0)) `shouldBe` [[Just 'X', Nothing, Nothing], [Nothing, Nothing, Nothing], [Nothing, Nothing, Nothing]]
+
