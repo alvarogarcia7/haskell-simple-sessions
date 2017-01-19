@@ -13,11 +13,11 @@ game = Game {
        }
 
 makeAMove :: Game -> Movement -> Game
-makeAMove game movement= do
+makeAMove game (x,y)= do
     let currentBoard = board game
-    let row = currentBoard !! (fst movement)
-    let newRow = replaceAt row (snd movement) (Just $ currentPlayer game)
-    let newBoard = replaceAt currentBoard (fst movement) newRow
+    let row = currentBoard !! x 
+    let newRow = replaceAt row y (Just $ currentPlayer game)
+    let newBoard = replaceAt currentBoard x newRow
     Game {board=newBoard, currentPlayer=TicTacToe.flip $ currentPlayer game}
 
 flip :: Char -> Char
