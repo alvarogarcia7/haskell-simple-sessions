@@ -1,3 +1,9 @@
 module TicTacToe where
 
-te = 1
+type Board = [[Char]]
+
+game :: [[Char]]
+game = [[' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' ']]
+
