@@ -1,4 +1,10 @@
-.PHONY: test
+.PHONY: test clean
 
 test:
-	runhaskell Permutations.hs
+	cabal test
+
+build:
+	cabal build
+
+clean:
+	cabal clean

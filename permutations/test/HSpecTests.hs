@@ -1,6 +1,6 @@
+import Permutations
 import Test.Hspec
 import Test.QuickCheck
-import Data.List
 
 main = hspec $ do
     describe "Canary Test" $ do
@@ -35,23 +35,4 @@ shouldBeInAnyOrder actual expected =
 
 includedIn xs ys = map (containedIn xs) ys where
     containedIn expecteds actual = any (==actual) expecteds
-
-
-permutate :: [a] -> [[a]]
-permutate [] = []
-permutate x = permutate' x [[]] where
-  permutate' elements accumulated = case length elements of
-    1 -> [elements]
-    2 -> [elements, reverse elements]
-    n -> foldl (++) [] $ map (\comb -> addInAllPositions (head x) comb ) $ permutate' (tail x) accumulated
-
-
-addInAllPositions element array = map (\position -> setAt array position element) (reverse [0..(length array)])
-
--- TODO AGB Replace function with Data.List.Tools::setAt
-setAt :: [a] -> Int -> a -> [a]
-setAt [] 0 ele = [ele]
-setAt [] _ _ = []
-setAt coll 0 ele = ele:coll
-setAt (x:xs) n ele = x:(setAt xs (n-1) ele)
 
