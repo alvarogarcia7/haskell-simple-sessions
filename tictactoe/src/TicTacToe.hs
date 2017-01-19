@@ -14,17 +14,17 @@ game = Game {
 
 makeAMove :: Game -> Movement -> Game
 makeAMove Game{currentPlayer='X'} movement=Game {
-        board = [
-            [Just 'X', Nothing, Nothing],
-            [Nothing, Nothing, Nothing],
-            [Nothing, Nothing, Nothing]],
-        currentPlayer='O'
-       }
+  board = [
+      [Just 'X', Nothing, Nothing],
+      [Nothing, Nothing, Nothing],
+      [Nothing, Nothing, Nothing]],
+  currentPlayer='O'
+ }
 makeAMove Game{currentPlayer='O'} movement=Game {
-        board = [
-            [Just 'X', Just 'O', Nothing],
-            [Nothing, Nothing, Nothing],
-            [Nothing, Nothing, Nothing]],
-        currentPlayer='X'
-       }
+  board = [
+      [Just 'X', Just 'O', Nothing],
+      [Nothing, Nothing, Nothing],
+      [Nothing, Nothing, Nothing]],
+  currentPlayer='X'
+ }
 
