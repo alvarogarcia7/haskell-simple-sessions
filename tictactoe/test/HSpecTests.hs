@@ -12,3 +12,6 @@ main = hspec $ do
     it "should be an empty board to start with" $ do
        board game `shouldBe` [[Nothing,Nothing,Nothing], [Nothing,Nothing,Nothing], [Nothing,Nothing,Nothing]]
 
+    it "should have the first player as 'X'" $ do
+       currentPlayer game `shouldBe` 'X' 
+
