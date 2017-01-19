@@ -17,5 +17,6 @@ makeAMove game movement= Game {
         board = [
             [Just 'X', Nothing, Nothing],
             [Nothing, Nothing, Nothing],
-            [Nothing, Nothing, Nothing]]
+            [Nothing, Nothing, Nothing]],
+        currentPlayer='O'
        }
