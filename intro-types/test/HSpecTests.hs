@@ -1,5 +1,6 @@
 import Test.Hspec
 import IntroToTypes 
+import Prelude hiding (flip)
 
 main = hspec $ do
     describe "a simple type" $ do
