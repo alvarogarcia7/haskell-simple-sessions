@@ -21,3 +21,10 @@ main = hspec $ do
 
       it "should flip the current player on first movement" $ do
         currentPlayer (makeAMove game (0,0)) `shouldBe` 'O'
+
+    describe "several movements" $ do
+      it "store them" $ do
+        let gameAfterFirstMove = makeAMove game (0,0)
+        board (makeAMove gameAfterFirstMove (0,1)) `shouldBe` [[Just 'X', Just 'O', Nothing], [Nothing, Nothing, Nothing], [Nothing, Nothing, Nothing]]
+
+
