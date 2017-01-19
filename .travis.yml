@@ -1,5 +1,5 @@
 language: haskell
-ghc: 7.4
+ghc: 8.0.1
 git:
   depth: 1
 sudo: false
