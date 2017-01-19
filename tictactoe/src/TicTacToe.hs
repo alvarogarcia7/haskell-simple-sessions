@@ -13,12 +13,11 @@ game = Game {
        }
 
 makeAMove :: Game -> Movement -> Game
-makeAMove game (x,y)= do
-    let currentBoard = board game
+makeAMove Game{board=currentBoard, currentPlayer=currentPlayer} (x,y) = do
     let row = currentBoard !! x 
-    let newRow = replaceAt row y (Just $ currentPlayer game)
+    let newRow = replaceAt row y (Just currentPlayer)
     let newBoard = replaceAt currentBoard x newRow
-    Game {board=newBoard, currentPlayer=flipPlayer $ currentPlayer game}
+    Game {board=newBoard, currentPlayer=flipPlayer currentPlayer}
 
 flipPlayer :: Char -> Char
 flipPlayer 'X' = 'O'
