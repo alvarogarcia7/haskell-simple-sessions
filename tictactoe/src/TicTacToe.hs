@@ -1,9 +1,9 @@
 module TicTacToe where
 
-type Board = [[Char]]
+type Board = [[Maybe Char]]
 
-game :: [[Char]]
-game = [[' ', ' ', ' '],
-        [' ', ' ', ' '],
-        [' ', ' ', ' ']]
+game :: [[Maybe Char]]
+game = [[Nothing, Nothing, Nothing],
+        [Nothing, Nothing, Nothing],
+        [Nothing, Nothing, Nothing]]
 

@@ -10,5 +10,5 @@ main = hspec $ do
 
   describe "tic tac toe" $ do
     it "should be an empty board to start with" $ do
-       game `shouldBe` [[' ',' ',' '], [' ',' ',' '], [' ',' ',' ']]
+       game `shouldBe` [[Nothing,Nothing,Nothing], [Nothing,Nothing,Nothing], [Nothing,Nothing,Nothing]]
 
