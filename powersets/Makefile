@@ -1,4 +1,10 @@
-.PHONY: test
+.PHONY: test clean
 
 test:
-	runhaskell main.hs
+	cabal test
+
+build:
+	cabal build
+
+clean:
+	cabal clean
