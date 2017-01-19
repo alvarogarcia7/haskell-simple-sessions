@@ -13,15 +13,14 @@ game = Game {
        }
 
 makeAMove :: Game -> Movement -> Game
-makeAMove game movement= case currentPlayer game of
-  'X' -> Game {
+makeAMove Game{currentPlayer='X'} movement=Game {
         board = [
             [Just 'X', Nothing, Nothing],
             [Nothing, Nothing, Nothing],
             [Nothing, Nothing, Nothing]],
         currentPlayer='O'
        }
-  'O' -> Game {
+makeAMove Game{currentPlayer='O'} movement=Game {
         board = [
             [Just 'X', Just 'O', Nothing],
             [Nothing, Nothing, Nothing],
