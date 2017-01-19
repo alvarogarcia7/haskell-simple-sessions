@@ -27,4 +27,10 @@ main = hspec $ do
         let gameAfterFirstMove = makeAMove game (0,0)
         board (makeAMove gameAfterFirstMove (0,1)) `shouldBe` [[Just 'X', Just 'O', Nothing], [Nothing, Nothing, Nothing], [Nothing, Nothing, Nothing]]
 
+      it "flips the current player" $ do
+        let gameAfterFirstMove = makeAMove game (0,0)
+        let gameAfterSecondMove = makeAMove gameAfterFirstMove (0,1)
+        currentPlayer gameAfterSecondMove `shouldBe` 'X'
+
+
 
