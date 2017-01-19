@@ -19,3 +19,5 @@ main = hspec $ do
       it "should store the first movement" $ do
         board (makeAMove game (0,0)) `shouldBe` [[Just 'X', Nothing, Nothing], [Nothing, Nothing, Nothing], [Nothing, Nothing, Nothing]]
 
+      it "should flip the current player on first movement" $ do
+        currentPlayer (makeAMove game (0,0)) `shouldBe` 'O'
