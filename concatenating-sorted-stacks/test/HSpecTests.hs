@@ -1,3 +1,4 @@
+import Module
 import Test.Hspec
 import Test.QuickCheck
 
@@ -28,10 +29,3 @@ main = do
           it "should sort stacks" $ do
             merg [0,2..8] [1,3..9] `shouldBe` [0..9]
 
-merg :: Ord a => [a] -> [a] -> [a]
-merg [] [] = []
-merg [] (x:xs) = x : merg [] xs
-merg y [] = merg [] y
-merg (x:xs) (x':xs') = case x `compare` x' of
-    GT -> x': (x  : (merg xs xs'))
-    _  -> x : (x' : (merg xs xs'))
