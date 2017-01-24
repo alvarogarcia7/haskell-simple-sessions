@@ -10,11 +10,11 @@ import Text.Parsec.Language (javaStyle)
 
 lexer = makeTokenParser javaStyle
 
-expr    = buildExpressionParser table term
-        <?> "expression"
+expr = buildExpressionParser table term
+     <?> "expression"
 
-term    = identifier lexer 
-        <?> "simple expression"
+term = identifier lexer 
+     <?> "simple expression"
 
 table = [ 
          [prefix "NOT" not_]
