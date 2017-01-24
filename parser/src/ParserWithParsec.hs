@@ -16,9 +16,10 @@ expr    = buildExpressionParser table term
 term    = identifier lexer 
         <?> "simple expression"
 
-table   = [ [prefix "NOT" not_]
-        , [binary "AND" (and_) AssocLeft]
-        , [binary "OR" (or_) AssocLeft]
+table = [ 
+         [prefix "NOT" not_]
+        ,[binary "AND" (and_) AssocLeft]
+        ,[binary "OR" (or_) AssocLeft]
         ]
 
 binary  name fun assoc = Infix (do{ reservedOp lexer name; return fun }) assoc
