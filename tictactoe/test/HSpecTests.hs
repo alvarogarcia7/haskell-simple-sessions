@@ -33,7 +33,7 @@ main = hspec $ do
         currentPlayer gameAfterSecondMove `shouldBe` 'X'
 
     describe "a game can be won" $ do
-      it "store them" $ do
+      it "by player X" $ do
         let moves = [(0,0),(2,0),
                      (0,1),(2,1),
                      (0,2)]

@@ -2,7 +2,7 @@ module TicTacToe where
 
 type Board = [[Maybe Char]]
 type Movement = (Int, Int)
-data Game = Game { board::Board, currentPlayer::Char }
+data Game = Game { board::Board, currentPlayer::Char, winner::Maybe Char }
 
 game :: Game
 game = Game {
@@ -12,12 +12,15 @@ game = Game {
         currentPlayer='X'
        }
 
+aNewGame :: Board -> Char -> Game
+aNewGame board player = Game {board=board, currentPlayer=player, winner=hasWon} where hasWon = Just 'X'
+
 makeAMove :: Game -> Movement -> Game
 makeAMove Game{board=currentBoard, currentPlayer=currentPlayer} (x,y) = do
     let row = currentBoard !! x 
     let newRow = replaceAt row y (Just currentPlayer)
     let newBoard = replaceAt currentBoard x newRow
-    Game {board=newBoard, currentPlayer=flipPlayer currentPlayer}
+    aNewGame newBoard (flipPlayer currentPlayer)
 
 flipPlayer :: Char -> Char
 flipPlayer 'X' = 'O'
