@@ -9,14 +9,15 @@ main = hspec $ do
        True `shouldBe` True
 
   describe "tic tac toe" $ do
-    it "should be an empty board to start with" $ do
-       board game `shouldBe` [[Nothing,Nothing,Nothing], [Nothing,Nothing,Nothing], [Nothing,Nothing,Nothing]]
+    describe "when it just started" $ do
+      it "should be an empty board to start with" $ do
+         board game `shouldBe` [[Nothing,Nothing,Nothing], [Nothing,Nothing,Nothing], [Nothing,Nothing,Nothing]]
 
-    it "should have the first player as 'X'" $ do
-       currentPlayer game `shouldBe` 'X' 
+      it "should have the first player as 'X'" $ do
+         currentPlayer game `shouldBe` 'X' 
 
-    it "should not have a winner by default" $ do
-       winner game `shouldBe` Nothing
+      it "should not have a winner by default" $ do
+         winner game `shouldBe` Nothing
 
     describe "first move only" $ do
       it "should store the first movement" $ do
