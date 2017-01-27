@@ -11,7 +11,7 @@ main = hspec $ do
   describe "tic tac toe" $ do
     describe "when it started" $ do
       it "should be an empty board to start with" $ do
-         board game `shouldBe` (board' [[' ',' ',' '], [' ',' ',' '], [' ',' ',' ']])
+         board game `shouldBe` board' [[' ',' ',' '], [' ',' ',' '], [' ',' ',' ']]
 
       it "should have the first player as 'X'" $ do
          currentPlayer game `shouldBe` 'X' 
