@@ -3,15 +3,23 @@ import TicTacToe
 import Test.Hspec
 import Text.Printf (printf)
 
+board' :: [[Char]] -> [[Maybe Char]]
+board' representation = 
+  map (\row -> 
+    map (\cell -> 
+      case cell of
+        ' ' -> Nothing
+        a -> Just a) row) representation
+
 main = hspec $ do
   describe "canary" $ do
     it "truthy" $ do
        True `shouldBe` True
 
   describe "tic tac toe" $ do
-    describe "when it just started" $ do
+    describe "when it started" $ do
       it "should be an empty board to start with" $ do
-         board game `shouldBe` [[Nothing,Nothing,Nothing], [Nothing,Nothing,Nothing], [Nothing,Nothing,Nothing]]
+         board game `shouldBe` (board' [[' ',' ',' '], [' ',' ',' '], [' ',' ',' ']])
 
       it "should have the first player as 'X'" $ do
          currentPlayer game `shouldBe` 'X' 
@@ -21,7 +29,7 @@ main = hspec $ do
 
     describe "first move only" $ do
       it "should store the first movement" $ do
-        board (makeAMove game (0,0)) `shouldBe` [[Just 'X', Nothing, Nothing], [Nothing, Nothing, Nothing], [Nothing, Nothing, Nothing]]
+        board (makeAMove game (0,0)) `shouldBe` board' [['X', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
 
       it "should flip the current player on first movement" $ do
         currentPlayer (makeAMove game (0,0)) `shouldBe` 'O'
@@ -29,7 +37,7 @@ main = hspec $ do
     describe "several movements" $ do
       it "store them" $ do
         let gameAfterFirstMove = makeAMove game (0,0)
-        board (makeAMove gameAfterFirstMove (0,1)) `shouldBe` [[Just 'X', Just 'O', Nothing], [Nothing, Nothing, Nothing], [Nothing, Nothing, Nothing]]
+        board (makeAMove gameAfterFirstMove (0,1)) `shouldBe` board' [['X', 'O', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
 
       it "flips the current player" $ do
         let gameAfterFirstMove = makeAMove game (0,0)
@@ -53,7 +61,9 @@ main = hspec $ do
 
     describe "determining a winning board" $ do
       it "no movements" $ do
-        hasWon Game{board=[[Nothing, Nothing, Nothing], [Nothing, Nothing, Nothing],[Nothing, Nothing, Nothing]]} `shouldBe` Nothing
+        hasWon Game{board=board' [[' ', ' ', ' '], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Nothing
+
+
 
 
 
