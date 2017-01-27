@@ -40,6 +40,13 @@ main = hspec $ do
         let afterApplyingMoves = foldl (\game move-> makeAMove game move) game moves
         winner afterApplyingMoves `shouldBe` Just 'X'
 
+      it "by player O" $ do
+        let moves = [(0,0),(2,0),
+                     (1,1),(2,1),
+                     (0,2),(2,2)]
+        let afterApplyingMoves = foldl (\game move-> makeAMove game move) game moves
+        winner afterApplyingMoves `shouldBe` Just 'O'
+
 
 
 
