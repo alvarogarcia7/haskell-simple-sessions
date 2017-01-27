@@ -15,6 +15,9 @@ main = hspec $ do
     it "should have the first player as 'X'" $ do
        currentPlayer game `shouldBe` 'X' 
 
+    it "should not have a winner by default" $ do
+       winner game `shouldBe` Nothing
+
     describe "first move only" $ do
       it "should store the first movement" $ do
         board (makeAMove game (0,0)) `shouldBe` [[Just 'X', Nothing, Nothing], [Nothing, Nothing, Nothing], [Nothing, Nothing, Nothing]]
