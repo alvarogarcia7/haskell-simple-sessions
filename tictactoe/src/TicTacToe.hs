@@ -17,7 +17,12 @@ aNewGame :: Board -> Char -> Game
 aNewGame board player = Game {board=board, currentPlayer=player, winner=hasWon} where hasWon = Just $ flipPlayer player
 
 hasWon :: Game -> Maybe Char
-hasWon game = if (any (\row -> [Just 'X', Just 'X', Just 'X'] == row) (board game)) then Just 'X' else Nothing
+hasWon game = if (any (\row -> [Just 'X', Just 'X', Just 'X'] == row) (board game)) then 
+  Just 'X' 
+  else if (any (\row -> [Just 'O', Just 'O', Just 'O'] == row) (board game)) then 
+  Just 'O'
+  else 
+    Nothing
 
 makeAMove :: Game -> Movement -> Game
 makeAMove Game{board=currentBoard, currentPlayer=currentPlayer} (x,y) = do
