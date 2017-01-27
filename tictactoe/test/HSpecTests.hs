@@ -69,6 +69,8 @@ main = hspec $ do
 
       it "three movements horizontally deserve a win for O" $ do
         hasWon Game{board=board' [['O', 'O', 'O'], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Just 'O'
+        hasWon Game{board=board' [[' ', ' ', ' '],['O', 'O', 'O'], [' ', ' ', ' ']]} `shouldBe` Just 'O'
+        hasWon Game{board=board' [[' ', ' ', ' '],[' ', ' ', ' '],['O', 'O', 'O']]} `shouldBe` Just 'O'
 
 
 
