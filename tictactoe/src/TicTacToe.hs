@@ -9,7 +9,8 @@ game = Game {
         board=[[Nothing, Nothing, Nothing],
                [Nothing, Nothing, Nothing],
                [Nothing, Nothing, Nothing]],
-        currentPlayer='X'
+        currentPlayer='X',
+        winner=Nothing
        }
 
 aNewGame :: Board -> Char -> Game
