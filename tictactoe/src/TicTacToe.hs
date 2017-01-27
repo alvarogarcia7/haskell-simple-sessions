@@ -16,6 +16,9 @@ game = Game {
 aNewGame :: Board -> Char -> Game
 aNewGame board player = Game {board=board, currentPlayer=player, winner=hasWon} where hasWon = Just $ flipPlayer player
 
+hasWon :: Game -> Maybe Char
+hasWon game = Nothing
+
 makeAMove :: Game -> Movement -> Game
 makeAMove Game{board=currentBoard, currentPlayer=currentPlayer} (x,y) = do
     let row = currentBoard !! x 
