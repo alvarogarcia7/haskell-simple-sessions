@@ -19,9 +19,13 @@ aNewGame board player = Game {board=board, currentPlayer=player, winner=hasWon} 
 hasWon :: Game -> Maybe Char
 hasWon game = do
   let board' = board game
-  if (any (\row -> [Just 'X', Just 'X', Just 'X'] == row) board') 
-    then Just 'X' 
-    else if (any (\row -> [Just 'O', Just 'O', Just 'O'] == row) board') then Just 'O'
+  case matchesIf3Of board' (Just 'X') of
+    Nothing -> matchesIf3Of board' (Just 'O')
+    match -> match 
+
+matchesIf3Of board movement= 
+  if (any (\row -> [movement,movement,movement] == row) board) 
+    then movement 
     else Nothing
 
 makeAMove :: Game -> Movement -> Game
