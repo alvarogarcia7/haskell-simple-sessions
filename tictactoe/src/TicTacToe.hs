@@ -13,7 +13,7 @@ game = Game {
        }
 
 aNewGame :: Board -> Char -> Game
-aNewGame board player = Game {board=board, currentPlayer=player, winner=hasWon} where hasWon = Just 'X'
+aNewGame board player = Game {board=board, currentPlayer=player, winner=hasWon} where hasWon = Just $ flipPlayer player
 
 makeAMove :: Game -> Movement -> Game
 makeAMove Game{board=currentBoard, currentPlayer=currentPlayer} (x,y) = do
