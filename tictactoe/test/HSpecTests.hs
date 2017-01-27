@@ -51,6 +51,10 @@ main = hspec $ do
         let afterApplyingMoves = foldl (\game move-> makeAMove game move) game moves
         winner afterApplyingMoves `shouldBe` Just 'O'
 
+    describe "determining a winning board" $ do
+      it "no movements" $ do
+        hasWon Game{board=[[Nothing, Nothing, Nothing], [Nothing, Nothing, Nothing],[Nothing, Nothing, Nothing]]} `shouldBe` Nothing
+
 
 
 
