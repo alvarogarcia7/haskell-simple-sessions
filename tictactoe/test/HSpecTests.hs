@@ -55,6 +55,14 @@ main = hspec $ do
       it "no movements" $ do
         hasWon Game{board=board' [[' ', ' ', ' '], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Nothing
 
+      it "a winner requires at least three movements" $ do
+        hasWon Game{board=board' [[' ', ' ', ' '], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Nothing
+        hasWon Game{board=board' [['X', ' ', ' '], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Nothing
+        hasWon Game{board=board' [['X', 'X', ' '], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Nothing
+        hasWon Game{board=board' [['O', ' ', ' '], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Nothing
+        hasWon Game{board=board' [['O', 'O', ' '], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Nothing
+
+
 
 
 board' :: [[Char]] -> [[Maybe Char]]
