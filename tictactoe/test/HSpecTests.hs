@@ -5,11 +5,10 @@ import Text.Printf (printf)
 
 board' :: [[Char]] -> [[Maybe Char]]
 board' representation = 
-  map (\row -> 
-    map (\cell -> 
-      case cell of
+  map (\row -> map convert row) representation where
+      convert cell =  case cell of
         ' ' -> Nothing
-        a -> Just a) row) representation
+        a -> Just a
 
 main = hspec $ do
   describe "canary" $ do
