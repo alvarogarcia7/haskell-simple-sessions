@@ -32,5 +32,14 @@ main = hspec $ do
         let gameAfterSecondMove = makeAMove gameAfterFirstMove (0,1)
         currentPlayer gameAfterSecondMove `shouldBe` 'X'
 
+    describe "a game can be won" $ do
+      it "store them" $ do
+        let moves = [(0,0),(2,0),
+                     (0,1),(2,1),
+                     (0,2)]
+        let afterApplyingMoves = foldl (\game move-> makeAMove game move) game moves
+        winner afterApplyingMoves `shouldBe` Just 'X'
+
+
 
 
