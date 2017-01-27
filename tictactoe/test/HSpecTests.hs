@@ -62,7 +62,7 @@ main = hspec $ do
         hasWon Game{board=board' [['O', ' ', ' '], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Nothing
         hasWon Game{board=board' [['O', 'O', ' '], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Nothing
 
-      it "three movements horizontally deserve a win" $ do
+      it "three movements horizontally deserve a win for X" $ do
         hasWon Game{board=board' [['X', 'X', 'X'], [' ', ' ', ' '],[' ', ' ', ' ']]} `shouldBe` Just 'X'
         hasWon Game{board=board' [[' ', ' ', ' '],['X', 'X', 'X'], [' ', ' ', ' ']]} `shouldBe` Just 'X'
         hasWon Game{board=board' [[' ', ' ', ' '],[' ', ' ', ' '],['X', 'X', 'X']]} `shouldBe` Just 'X'
