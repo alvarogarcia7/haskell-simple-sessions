@@ -43,3 +43,8 @@ make test
 ```
 
 [sohp]: https://www.schoolofhaskell.com/school/starting-with-haskell/basics-of-haskell
+
+## Links
+
+Jake Wheat's "Intro to parsing": http://jakewheat.github.io/intro_to_parsing/
+
