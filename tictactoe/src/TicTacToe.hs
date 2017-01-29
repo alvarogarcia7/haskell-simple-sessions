@@ -28,8 +28,8 @@ hasWon game = do
 
 winnerInHorizontal :: Board -> [Maybe Char]
 winnerInHorizontal board = do
-  let matchesO = matchesIf3EqualInSameRow board $ Just 'O'
   let matchesX = matchesIf3EqualInSameRow board $ Just 'X'
+  let matchesO = matchesIf3EqualInSameRow board $ Just 'O'
   [matchesO, matchesX]
 
 winnerInVertical :: Board -> [Maybe Char]
