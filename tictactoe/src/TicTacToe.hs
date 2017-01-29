@@ -32,8 +32,9 @@ winnerInVertical :: Board -> [Maybe Char]
 winnerInVertical board = do
   let movementX = Just 'X'
   let movementO = Just 'O'
-  let winnerInVerticalForX = if ((board !! 0 !! 0 == movementX) && (board !! 1 !! 0 == movementX) && (board !! 2 !! 0 == movementX)) || ((board !! 0 !! 1 == movementX) && (board !! 1 !! 1 == movementX) && (board !! 2 !! 1 == movementX)) || ((board !! 0 !! 2 == movementX) && (board !! 1 !! 2 == movementX) && (board !! 2 !! 2 == movementX)) then movementX else Nothing
-  let winnerInVerticalForO = if ((board !! 0 !! 0 == movementO) && (board !! 1 !! 0 == movementO) && (board !! 2 !! 0 == movementO)) || ((board !! 0 !! 1 == movementO) && (board !! 1 !! 1 == movementO) && (board !! 2 !! 1 == movementO)) || ((board !! 0 !! 2 == movementO) && (board !! 1 !! 2 == movementO) && (board !! 2 !! 2 == movementO)) then movementO else Nothing
+  let matchesInVertical movementO = if ((board !! 0 !! 0 == movementO) && (board !! 1 !! 0 == movementO) && (board !! 2 !! 0 == movementO)) || ((board !! 0 !! 1 == movementO) && (board !! 1 !! 1 == movementO) && (board !! 2 !! 1 == movementO)) || ((board !! 0 !! 2 == movementO) && (board !! 1 !! 2 == movementO) && (board !! 2 !! 2 == movementO)) then movementO else Nothing
+  let winnerInVerticalForX = matchesInVertical movementX
+  let winnerInVerticalForO = matchesInVertical movementO
   [winnerInVerticalForO, winnerInVerticalForX]   
 
 
