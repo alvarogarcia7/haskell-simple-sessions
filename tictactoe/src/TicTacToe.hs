@@ -32,8 +32,10 @@ winnerInVertical :: Board -> [Maybe Char]
 winnerInVertical board = do
   let movementX = Just 'X'
   let movementO = Just 'O'
-  let matchesInVertical movement = if ((board !! 0 !! 0 == movement) && (board !! 1 !! 0 == movement) && (board !! 2 !! 0 == movement)) || ((board !! 0 !! 1 == movement) && (board !! 1 !! 1 == movement) && (board !! 2 !! 1 == movement)) || ((board !! 0 !! 2 == movement) && (board !! 1 !! 2 == movement) && (board !! 2 !! 2 == movement)) then movement else Nothing
-  [matchesInVertical movementO, matchesInVertical movementX]   
+  let board' = transpose board
+  let matchesX = matchesIf3EqualInSameRow board' movementX
+  let matchesO = matchesIf3EqualInSameRow board' movementO
+  [matchesO, matchesX]
 
 
 matchesIf3EqualInSameRow board movement= 
