@@ -72,6 +72,9 @@ main = hspec $ do
         hasWon Game{board=board' [[' ', ' ', ' '],['O', 'O', 'O'], [' ', ' ', ' ']]} `shouldBe` Just 'O'
         hasWon Game{board=board' [[' ', ' ', ' '],[' ', ' ', ' '],['O', 'O', 'O']]} `shouldBe` Just 'O'
 
+      it "three movements vertically deserve a win for X" $ do
+        hasWon Game{board=board' [['X', ' ', ' '], ['X', ' ', ' '],['X', ' ', ' ']]} `shouldBe` Just 'X'
+       
 
 
 board' :: [[Char]] -> [[Maybe Char]]
