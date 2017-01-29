@@ -30,9 +30,9 @@ hasWon game = do
 
 winnerInVertical :: Board -> [Maybe Char]
 winnerInVertical board = do
-  let board' = transpose board
-  let matchesX = matchesIf3EqualInSameRow board' $ Just 'X'
-  let matchesO = matchesIf3EqualInSameRow board' $ Just 'O'
+  let transposedBoard = transpose board
+  let matchesX = matchesIf3EqualInSameRow transposedBoard $ Just 'X'
+  let matchesO = matchesIf3EqualInSameRow transposedBoard $ Just 'O'
   [matchesO, matchesX]
 
 
