@@ -27,9 +27,9 @@ hasWon game = do
   last $ sort winByType
 
 winnerInHorizontal board' = do
-  let matchesX = matchesIf3EqualInSameRow board' (Just 'X')
   let matchesO = matchesIf3EqualInSameRow board' (Just 'O')
-  [matchesX, matchesO]
+  let matchesX = matchesIf3EqualInSameRow board' (Just 'X')
+  [matchesO, matchesX]
 
 winnerInVertical :: Board -> [Maybe Char]
 winnerInVertical board = do
