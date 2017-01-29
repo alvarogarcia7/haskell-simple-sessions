@@ -29,9 +29,9 @@ hasWon game = do
   last $ sort winByType
 
 winnerInVertical :: Board -> [Maybe Char]
-winnerInVertical board' = do
-  let winnerInVerticalForX = if ((board' !! 0 !! 0 == Just 'X') && (board' !! 1 !! 0 == Just 'X') && (board' !! 2 !! 0 == Just 'X')) || ((board' !! 0 !! 1 == Just 'X') && (board' !! 1 !! 1 == Just 'X') && (board' !! 2 !! 1 == Just 'X')) || ((board' !! 0 !! 2 == Just 'X') && (board' !! 1 !! 2 == Just 'X') && (board' !! 2 !! 2 == Just 'X')) then Just 'X' else Nothing
-  let winnerInVerticalForO = if ((board' !! 0 !! 0 == Just 'O') && (board' !! 1 !! 0 == Just 'O') && (board' !! 2 !! 0 == Just 'O')) || ((board' !! 0 !! 1 == Just 'O') && (board' !! 1 !! 1 == Just 'O') && (board' !! 2 !! 1 == Just 'O')) || ((board' !! 0 !! 2 == Just 'O') && (board' !! 1 !! 2 == Just 'O') && (board' !! 2 !! 2 == Just 'O')) then Just 'O' else Nothing
+winnerInVertical board = do
+  let winnerInVerticalForX = if ((board !! 0 !! 0 == Just 'X') && (board !! 1 !! 0 == Just 'X') && (board !! 2 !! 0 == Just 'X')) || ((board !! 0 !! 1 == Just 'X') && (board !! 1 !! 1 == Just 'X') && (board !! 2 !! 1 == Just 'X')) || ((board !! 0 !! 2 == Just 'X') && (board !! 1 !! 2 == Just 'X') && (board !! 2 !! 2 == Just 'X')) then Just 'X' else Nothing
+  let winnerInVerticalForO = if ((board !! 0 !! 0 == Just 'O') && (board !! 1 !! 0 == Just 'O') && (board !! 2 !! 0 == Just 'O')) || ((board !! 0 !! 1 == Just 'O') && (board !! 1 !! 1 == Just 'O') && (board !! 2 !! 1 == Just 'O')) || ((board !! 0 !! 2 == Just 'O') && (board !! 1 !! 2 == Just 'O') && (board !! 2 !! 2 == Just 'O')) then Just 'O' else Nothing
   [winnerInVerticalForO, winnerInVerticalForX]   
 
 
