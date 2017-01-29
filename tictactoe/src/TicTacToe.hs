@@ -1,5 +1,7 @@
 module TicTacToe where
 
+import Data.List
+
 type Board = [[Maybe Char]]
 type Movement = (Int, Int)
 data Game = Game { board::Board, currentPlayer::Char, winner::Maybe Char }
@@ -19,9 +21,12 @@ aNewGame board player = Game {board=board, currentPlayer=player, winner=hasWon} 
 hasWon :: Game -> Maybe Char
 hasWon game = do
   let board' = board game
-  case matchesIf3Of board' (Just 'X') of
-    Nothing -> matchesIf3Of board' (Just 'O')
-    match -> match 
+  let winnerInHorizontal = case matchesIf3Of board' (Just 'X') of
+        Nothing -> matchesIf3Of board' (Just 'O')
+        match -> match 
+  let winnerInVertical = if (board' !! 0 !! 0 == Just 'X') && (board' !! 1 !! 0 == Just 'X') && (board' !! 2 !! 0 == Just 'X') then Just 'X' else Nothing
+  let winByType = [winnerInVertical, winnerInHorizontal]
+  last $ sort winByType
 
 matchesIf3Of board movement= 
   if (any (\row -> [movement,movement,movement] == row) board) 
