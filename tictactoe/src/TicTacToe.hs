@@ -33,9 +33,7 @@ winnerInVertical board = do
   let movementX = Just 'X'
   let movementO = Just 'O'
   let matchesInVertical movement = if ((board !! 0 !! 0 == movement) && (board !! 1 !! 0 == movement) && (board !! 2 !! 0 == movement)) || ((board !! 0 !! 1 == movement) && (board !! 1 !! 1 == movement) && (board !! 2 !! 1 == movement)) || ((board !! 0 !! 2 == movement) && (board !! 1 !! 2 == movement) && (board !! 2 !! 2 == movement)) then movement else Nothing
-  let winnerInVerticalForX = matchesInVertical movementX
-  let winnerInVerticalForO = matchesInVertical movementO
-  [winnerInVerticalForO, winnerInVerticalForX]   
+  [matchesInVertical movementO, matchesInVertical movementX]   
 
 
 matchesIf3EqualInSameRow board movement= 
