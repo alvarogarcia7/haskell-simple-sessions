@@ -21,11 +21,9 @@ aNewGame board player = Game {board=board, currentPlayer=player, winner=hasWon} 
 hasWon :: Game -> Maybe Char
 hasWon game = do
   let board' = board game
-  let winnerInHorizontal = case matchesIf3EqualInSameRow board' (Just 'X') of
-        Nothing -> matchesIf3EqualInSameRow board' (Just 'O')
-        match -> match 
+  let winnerInHorizontal = [matchesIf3EqualInSameRow board' (Just 'X'), matchesIf3EqualInSameRow board' (Just 'O')]
   let winnerInVertical' = winnerInVertical board'
-  let winByType = winnerInHorizontal : winnerInVertical'
+  let winByType = winnerInHorizontal ++ winnerInVertical'
   last $ sort winByType
 
 winnerInVertical :: Board -> [Maybe Char]
