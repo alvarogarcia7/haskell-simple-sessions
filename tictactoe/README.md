@@ -13,5 +13,5 @@ When checking the winning,
 
   * for rows, using `any` to assert matching the three equal elements
   * for columns:
-    * Up to commit TODO XXXX /TODO, using a manual check
+    * Up to commit 6b4889ef02c6536d8b74b2b79ab5c1c7685ab19a, using a manual check
 
