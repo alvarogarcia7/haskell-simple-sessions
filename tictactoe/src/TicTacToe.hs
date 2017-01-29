@@ -24,7 +24,7 @@ hasWon game = do
   let winnerInHorizontal = case matchesIf3Of board' (Just 'X') of
         Nothing -> matchesIf3Of board' (Just 'O')
         match -> match 
-  let winnerInVertical = if (board' !! 0 !! 0 == Just 'X') && (board' !! 1 !! 0 == Just 'X') && (board' !! 2 !! 0 == Just 'X') then Just 'X' else Nothing
+  let winnerInVertical = if ((board' !! 0 !! 0 == Just 'X') && (board' !! 1 !! 0 == Just 'X') && (board' !! 2 !! 0 == Just 'X')) || ((board' !! 0 !! 1 == Just 'X') && (board' !! 1 !! 1 == Just 'X') && (board' !! 2 !! 1 == Just 'X')) || ((board' !! 0 !! 2 == Just 'X') && (board' !! 1 !! 2 == Just 'X') && (board' !! 2 !! 2 == Just 'X')) then Just 'X' else Nothing
   let winByType = [winnerInVertical, winnerInHorizontal]
   last $ sort winByType
 
