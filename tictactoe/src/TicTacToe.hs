@@ -24,10 +24,16 @@ hasWon game = do
   let winnerInHorizontal = case matchesIf3EqualInSameRow board' (Just 'X') of
         Nothing -> matchesIf3EqualInSameRow board' (Just 'O')
         match -> match 
+  let winnerInVertical' = winnerInVertical board'
+  let winByType = winnerInHorizontal : winnerInVertical'
+  last $ sort winByType
+
+winnerInVertical :: Board -> [Maybe Char]
+winnerInVertical board' = do
   let winnerInVerticalForX = if ((board' !! 0 !! 0 == Just 'X') && (board' !! 1 !! 0 == Just 'X') && (board' !! 2 !! 0 == Just 'X')) || ((board' !! 0 !! 1 == Just 'X') && (board' !! 1 !! 1 == Just 'X') && (board' !! 2 !! 1 == Just 'X')) || ((board' !! 0 !! 2 == Just 'X') && (board' !! 1 !! 2 == Just 'X') && (board' !! 2 !! 2 == Just 'X')) then Just 'X' else Nothing
   let winnerInVerticalForO = if ((board' !! 0 !! 0 == Just 'O') && (board' !! 1 !! 0 == Just 'O') && (board' !! 2 !! 0 == Just 'O')) || ((board' !! 0 !! 1 == Just 'O') && (board' !! 1 !! 1 == Just 'O') && (board' !! 2 !! 1 == Just 'O')) || ((board' !! 0 !! 2 == Just 'O') && (board' !! 1 !! 2 == Just 'O') && (board' !! 2 !! 2 == Just 'O')) then Just 'O' else Nothing
-  let winByType = [winnerInVerticalForX, winnerInVerticalForO, winnerInHorizontal]
-  last $ sort winByType
+  [winnerInVerticalForO, winnerInVerticalForX]   
+
 
 matchesIf3EqualInSameRow board movement= 
   if (any (\row -> [movement,movement,movement] == row) board) 
