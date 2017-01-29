@@ -39,6 +39,7 @@ winnerInVertical board = do
   let matchesO = matchesIf3EqualInSameRow transposedBoard $ Just 'O'
   [matchesO, matchesX]
 
+matchesIf3EqualInSameRow :: Board -> Maybe Char -> Maybe Char
 matchesIf3EqualInSameRow board movement= 
   if (any (\row -> [movement,movement,movement] == row) board) 
     then movement 
