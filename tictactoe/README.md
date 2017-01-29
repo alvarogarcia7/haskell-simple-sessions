@@ -6,3 +6,12 @@
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 This simple session is another iteration of that same problem / practice.
+
+## Development notes
+
+When checking the winning,
+
+  * for rows, using `any` to assert matching the three equal elements
+  * for columns:
+    * Up to commit TODO XXXX /TODO, using a manual check
+
