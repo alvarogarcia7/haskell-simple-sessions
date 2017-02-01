@@ -59,3 +59,29 @@ flipPlayer 'O' = 'X'
 replaceAt :: [a] -> Int -> a -> [a]
 replaceAt xs idx v = let (front, back) = splitAt idx xs in front ++ v:(drop 1 back)
 
+emptyPositions :: Game -> [Movement]
+emptyPositions game = do
+  let board' = index $ board game
+  let flatten xs = foldl (++) [] xs
+  let isPresent (movement, play) = case play of 
+                                     Nothing -> True 
+                                     _ -> False
+  let result = map fst $ flatten $ map (\row -> filter isPresent row) board'
+  result
+ 
+index :: Board -> [[(Movement, Maybe Char)]]
+index board = do
+  let indices = [0..2]
+  let x = zip indices board
+  map (\(rowIndex, row) -> do
+    let y = map (\indice -> (rowIndex, indice)) indices
+    zip y row) x
+
+
+board' :: [[Char]] -> [[Maybe Char]]
+board' representation = 
+  map (\row -> map convert row) representation where
+      convert cell =  case cell of
+        ' ' -> Nothing
+        a -> Just a
+

@@ -85,10 +85,10 @@ main = hspec $ do
       
 
 
-board' :: [[Char]] -> [[Maybe Char]]
-board' representation = 
-  map (\row -> map convert row) representation where
-      convert cell =  case cell of
-        ' ' -> Nothing
-        a -> Just a
-
+--board' :: [[Char]] -> [[Maybe Char]]
+--board' representation = 
+--  map (\row -> map convert row) representation where
+--      convert cell =  case cell of
+--        ' ' -> Nothing
+--        a -> Just a
+--
