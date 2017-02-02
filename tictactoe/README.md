@@ -14,5 +14,5 @@ When checking the winning,
   * for rows, using `any` to assert matching the three equal elements
   * for columns:
     * Up to [this commit](https://github.com/alvarogarcia7/haskell-simple-sessions/tree/6b4889ef02c6536d8b74b2b79ab5c1c7685ab19a/tictactoe), using a manual check
-    * The columns can be checked as the rows if the matrix is transposed (see commit ['Replace algorithm'](https://refactoring.com/catalog/substituteAlgorithm.html) in [here](https://github.com/alvarogarcia7/haskell-simple-sessions/commit/02b397b42f8ee68d12004b258f5a94fdb6585453))
+    * The columns can be checked as the rows if the matrix is transposed (see commit ['Replace algorithm'](https://refactoring.com/catalog/substituteAlgorithm.html) (which is, in fact, called 'Substitute algorithm') in [here](https://github.com/alvarogarcia7/haskell-simple-sessions/commit/02b397b42f8ee68d12004b258f5a94fdb6585453))
 
