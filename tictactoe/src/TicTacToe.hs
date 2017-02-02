@@ -68,6 +68,15 @@ emptyPositions game = do
                                      _ -> False
   let result = map fst $ flatten $ map (\row -> filter isPresent row) board'
   result
+
+--exhaustive :: Game -> [[Movement]]
+--exhaustive game = do
+--  let boardIsFull game = emptyPositions game == []
+--  let flatten xs = foldl (++) [] xs
+--  if boardIsFull game then
+--    currentMovements
+--      else
+--        map (\pos->exhaustive (makeAMove game pos)) $ emptyPositions game
  
 index :: Board -> [[(Movement, Maybe Char)]]
 index board = do
