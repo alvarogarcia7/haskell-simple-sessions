@@ -21,6 +21,12 @@ nthChildren (Root _ children) nth = children !! nth
 leaf :: a -> Tree a
 leaf root = Root root []
 
+unfoldTree' :: a -> (a -> a) -> [a -> a -> a] -> Int -> Tree a
+unfoldTree' root fns fns' 0 = leaf root
+unfoldTree' root fns fns' n = Root root childrenTrees where
+    childrenTrees = map (\child -> unfoldTree' child fns fns' (n-1)) children
+    children = [fns root] ++ map (\fn -> fn root root) fns' ++ [fns root]
+
 unfoldTree :: a -> [a -> a] -> Int -> Tree a
 unfoldTree root [] depth = leaf root
 unfoldTree root fns 0 = leaf root
